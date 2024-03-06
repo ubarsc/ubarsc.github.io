@@ -5,5 +5,5 @@ date:   2024-03-04 15:10:00 +1000
 categories: update
 ---
 
-RIOS 1.4.17 has been released. This is mainly a bugfix release see 
+RIOS 1.4.17 has been released. This is mainly a bugfix release. See 
 the [Release Notes](https://www.rioshome.org/en/latest/releasenotes.html).
