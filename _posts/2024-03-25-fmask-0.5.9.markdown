@@ -1,0 +1,11 @@
+---
+layout: post
+title:  "python-fmask 0.5.9 Released"
+date:   2024-03-25 9:00:00 +1000
+categories: update
+---
+
+python-fmask 0.5.9 has been released. This fixes a problem with RIOS 1.4.17
+and removes the '.py' from the command line scripts to make life easier for
+Windows users (and more in line with other packages). The .py command line
+scripts will still be available for old code. See the [Release Notes]( https://www.pythonfmask.org/en/latest/releasenotes.html).
