@@ -1,0 +1,9 @@
+---
+layout: post
+title:  "pyshepseg 2.0.1 Released"
+date:   2024-05-23 9:00:00 +1000
+categories: update
+---
+
+pyshepseg 2.0.1 has been released. This fixes a problem with recent scipy
+versions and improves AWS Batch support. See the [Release Notes]( https://www.pyshepseg.org/en/latest/ReleaseNotes.html).
