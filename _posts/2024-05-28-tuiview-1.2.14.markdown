@@ -1,0 +1,12 @@
+---
+layout: post
+title:  "TuiView 1.2.14 Released"
+date:   2024-05-28 8:00:00 +1000
+categories: update
+---
+
+TuiView 1.2.14 has been released. The main feature of this release
+is the removal of the 100million row limit on Raster Attribute Tables
+in the Query Windows. This was a limit of Qt but we now implement our
+own table view which has no limit. Other improvements have also been made.
+See the [CHANGES.txt]( https://github.com/ubarsc/tuiview/blob/master/CHANGES.txt).
