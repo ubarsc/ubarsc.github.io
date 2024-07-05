@@ -1,0 +1,15 @@
+---
+layout: post
+title:  "RIOS 2.0 Released"
+date:   2024-07-05 15:35:00 +1000
+categories: update
+---
+
+A major update of RIOS has been released. Version 2.0 incorporates
+strong support for concurrency in reading, computation and writing.
+This allows users to make much better use of available hardware, and
+to avoid spending large amounts of time waiting for high-latency
+storage such as S3. See the 
+[Release Notes](https://www.rioshome.org/en/latest/releasenotes.html)
+for more information. Version 2.0.0 was released on 2024-05-23, followed
+(inevitably) by several minor bug-fix releases shortly thereafter.
