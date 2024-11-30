@@ -1,0 +1,12 @@
+---
+layout: post
+title:  "RIOS 2.0.5, with single-pass stats & pyramids"
+date:   2024-11-30 10:00:00 +1000
+categories: update
+---
+
+The latest RIOS release (2.0.5) includes single-pass calculation
+of output statistics/histograms/pyramid layers, giving non-trivial speed-ups,
+especially with large output rasters. See
+[Release Notes](https://www.rioshome.org/en/latest/releasenotes.html#version-2-0-5-2024-11-18)
+for more information.
