@@ -1,0 +1,10 @@
+---
+layout: post
+title:  "pyshepseg 2.0.3 released with numpy 2.0 support"
+date:   2024-12-06 10:00:00 +1000
+categories: update
+---
+
+pyshepseg 2.0.3 has been released. This release fully supports numpy 2.0.
+It can also make use of RIOS 2.0 readworkers when calculating statistics.
+More information can be found in the [Release Notes](https://www.pyshepseg.org/en/latest/ReleaseNotes.html).
