@@ -1,0 +1,14 @@
+---
+layout: post
+title:  "TuiView 1.3.0 released using PySide6 instead of PyQt5"
+date:   2024-12-06 10:00:00 +1000
+categories: update
+---
+
+TuiView 2.0.3 has been released. The major thing in this release
+is that the GUI toolkit has been shifted from PyQt5/Qt5 to 
+PySide6/Qt6. This has required many changes to the code so 
+caution should be excerised when upgrading. 
+The ability to copy the display directly to the clipboard has
+also been added. See the [list of changes](https://github.com/ubarsc/tuiview/blob/master/CHANGES.txt)
+for more information.

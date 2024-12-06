@@ -9,4 +9,6 @@ The latest kealib (1.6.0) has improved threadsafety and increased default intern
 chunksizes which may improve performance reading files on /vsis3 and /vsicurl 
 filesystems.
 Also fixes an issue with overview writing on the fly with RIOS 2.0.5 and the internal GDAL driver.
+This release *may* cause ABI breakage so it is suggested that users recompile anything
+linked to kealib when upgrading.
 For more information see the [list of changes](https://github.com/ubarsc/kealib/blob/master/Changes.txt).
