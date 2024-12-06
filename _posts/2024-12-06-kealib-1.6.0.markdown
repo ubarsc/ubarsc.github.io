@@ -1,0 +1,14 @@
+---
+layout: post
+title:  "kealib 1.6.0 released with improved threadsafety and better performance on remote filesystems"
+date:   2024-12-06 10:00:00 +1000
+categories: update
+---
+
+The latest kealib (1.6.0) has improved threadsafety and increased default internal
+chunksizes which may improve performance reading files on /vsis3 and /vsicurl 
+filesystems.
+Also fixes an issue with overview writing on the fly with RIOS 2.0.5 and the internal GDAL driver.
+This release *may* cause ABI breakage so it is suggested that users recompile anything
+linked to kealib when upgrading.
+For more information see the [list of changes](https://github.com/ubarsc/kealib/blob/master/Changes.txt).
