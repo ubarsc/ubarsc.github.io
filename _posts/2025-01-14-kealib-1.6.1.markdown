@@ -1,0 +1,12 @@
+---
+layout: post
+title:  "kealib 1.6.1 bug fix release"
+date:   2025-01-14 08:00:00 +1000
+categories: update
+---
+
+[kealib](https://kealib.org/) 1.6.1 has been released. This is mainly a bug fix release.
+Memory leaks have been resolved in the Python bindings, and performance of building neighbours
+in Python has been improved. There has also been a fix to libkea to ensure neighbours are
+flushed properly to file.
+For more information see the [list of changes](https://github.com/ubarsc/kealib/blob/master/Changes.txt).
