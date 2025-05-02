@@ -1,0 +1,16 @@
+---
+layout: post
+title:  "kealib 1.6.2 bug fix release"
+date:   2025-05-02 08:00:00 +1000
+categories: update
+---
+
+[kealib](https://kealib.org/) 1.6.2 has been released. This is a minor a bug fix release.
+This addresses a problem where Raster Attribute Table updates wheren't always written 
+straight to file. Changes used to be written when the table object was destroyed but
+this appears to not happen reliably with later GDAL. This could cause file corruption
+when you re-open the KEA file later in the same script.
+This release also updates the `cmake` build for recent versions of `cmake` and bumps
+the minimum required version.
+
+For more information see the [list of changes](https://github.com/ubarsc/kealib/blob/master/Changes.txt).
