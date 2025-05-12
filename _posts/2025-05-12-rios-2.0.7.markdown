@@ -1,0 +1,11 @@
+---
+layout: post
+title:  "RIOS 2.0.7, with AWS ECS compute workers"
+date:   2025-05-12 10:30:00 +1000
+categories: update
+---
+
+The latest RIOS release (2.0.7) includes the CW_ECS compute worker kind,
+providing scaleable AWS compute workers. See
+[Release Notes](https://www.rioshome.org/en/latest/releasenotes.html#version-2-0-7-2025-05-11)
+for more information.
