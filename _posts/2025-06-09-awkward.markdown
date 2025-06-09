@@ -1,0 +1,82 @@
+---
+layout: post
+title:  "Using Awkward arrays with KEA neighbours"
+date:   2025-06-09 10:30:00 +1000
+categories: tutorial
+---
+
+# Introduction
+
+This post is a quick introduction to [Awkward Arrays](https://awkward-array.org). Awkward arrays
+are similar to numpy arrays, but allow different numbers to elements in each row. The package can be
+installed from either conda (as `awkward`) or the Ubuntu repositories (as `python3-awkward`). Here
+is an example:
+
+```
+import awkward
+
+a = awkward.Array([[1, 2, 3], [4], [5, 6, 7, 1, 2], [32, 90]])
+print(a)
+
+```
+
+Note that doing a similar thing with `numpy` triggers a `The requested array has an inhomogeneous shape after 1 dimensions` 
+type error message.
+
+One of the more interesting features of Awkward arrays is that the [Numba](https://numba.pydata.org/) JIT compiler 
+can deal with them. For example:
+
+```
+import awkward
+from numba import njit
+
+@njit
+def total(aa):
+    tot = 0
+    for i in range(len(aa)):
+        ab = aa[i]
+        for j in range(len(ab)):
+            tot += ab[j]
+    return tot
+
+a = awkward.Array([[1, 2, 3], [4], [5, 6, 7, 1, 2], [32, 90]])
+print(total(a))
+```
+
+Note how the length of each row must be obtained with `len()`, unlike numpy where you know the shape of everything
+at the start.
+
+# Using Awkward arrays with KEA neighbours
+
+[kealib](https://kealib.org/) has one feature that isn't available from GDAL - the storing of the neighbours
+of each segment or class in a file. It makes most sense in a segmentation situation (see [pyshepseg](https://github.com/ubarsc/pyshepseg/))
+where each class only has a small number of direct neighbours. kealib comes with a small Python module to allow
+reading and writing of neighbours. Install as `pykealib` with conda, or from source - see the `python` directory of
+the kealib sources. 
+With the Python module comes a small command line program called `kea_build_neighbours` that calculates the neighbours 
+of a file and stores them in the file (also available in the [`kealib.build_neighbours`](https://kealib.org/python/kealib/build_neighbours.html)
+module):
+```
+kea_build_neighbours --infile /tmp/classes.kea
+```
+
+Note that it is expected that the file already has the histogram calculated. This is normally done by RIOS (or the `rioscalcstats`
+command line program) or `pyshepseg`. Once the neighbours are built they can be retrieved from Python as an awkward array:
+```
+from osgeo import gdal
+from kealib import extrat
+
+ds = gdal.Open('/tmp/classes.kea')
+neighbours = extrat.getNeighbours(ds, 1, 0, 100)
+```
+
+Note the parameters for the `getNeighbours` call: 
+  1. The first parameter is a GDAL dataset object
+  2. The second is the 1-based band index.
+  3. The third parameter is the start index in the RAT to read neighbours for
+  4. The last parameter is the number of rows to read. 
+  
+You can use `extrat.getSize(ds, 1)` to get the number of rows in the RAT. See [the Python documentation](https://kealib.org/python/kealib/extrat.html)
+for more information on the `kealib.extrat` module but note that most of the functionality is also available from GDAL so 
+best to keep using those functions where possible for best compatibility with other formats. However, the KEA neighbours
+functionality is only available from here.
