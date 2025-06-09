@@ -10,7 +10,7 @@ categories: tutorial
 This post is a quick introduction to [Awkward Arrays](https://awkward-array.org). Awkward arrays
 are similar to numpy arrays, but allow different numbers to elements in each row. The package can be
 installed from either conda (as `awkward`) or the Ubuntu repositories (as `python3-awkward`). Here
-is an example::
+is an example:
 
 ```
 import awkward
@@ -49,7 +49,7 @@ at the start.
 # Using Awkward arrays with KEA neighbours
 
 [kealib](https://kealib.org/) has one feature that isn't available from GDAL - the storing of the neighbours
-of each segment or class in a file. It makes most sense in a segmentation situation (see [pyshepseg](github.com/ubarsc/pyshepseg/))
+of each segment or class in a file. It makes most sense in a segmentation situation (see [pyshepseg](https://github.com/ubarsc/pyshepseg/))
 where each class only has a small number of direct neighbours. kealib comes with a small Python module to allow
 reading and writing of neighbours. Install as `pykealib` with conda, or from source - see the `python` directory of
 the kealib sources. 
