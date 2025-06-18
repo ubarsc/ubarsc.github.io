@@ -1,0 +1,95 @@
+---
+layout: post
+title:  "Using RIOS with ECS Clusters on AWS"
+date:   2025-06-17 10:30:00 +1000
+categories: tutorial
+---
+
+# Introduction
+
+This post is a quick introduction to the new AWS ECS parallel processing feature in RIOS.
+This feature is intended for CPU intensive jobs - this is unlikely to speed up I/O bounds jobs.
+
+# AWS ECS
+
+[AWS ECS](https://aws.amazon.com/ecs/) is a "container orchestration" service. What this means
+is that it allows you to create a cluster of VMs running your RIOS function in parallel. RIOS now
+has [very extensive](https://www.rioshome.org/en/latest/concurrency.html) support for parallel processing. Tiles
+are farmed out for processing to this cluster so the processing is spread around as shown in this
+diagram from the RIOS documentation:
+
+![AWS ECS RIOS processing](https://www.rioshome.org/en/latest/_images/MultiMachineCase.png)
+
+[RIOS supports ECS](https://www.rioshome.org/en/latest/concurrency.html#CW_ECS) in 2 modes - Fargate and Private Cluster. Examples for both of these 
+are below. Note that the older AWS Batch parallel support is deprecated - ECS is a much
+neater solution. You can still run the "main" RIOS script from within AWS Batch of course.
+
+## ECS with Fargate
+
+Fargate is a mode of ECS that is much easier to use - AWS has a fleet of VMs that are already
+running and can be added to your ECS cluster with the mimimum of hassle (and speed). Here is an exampe
+of how you might start and ECS Fargate cluster using the helper function [makeExtraParams_Fargate](https://www.rioshome.org/en/latest/rios_computemanager.html#rios.computemanager.ECSComputeWorkerMgr.makeExtraParams_Fargate):
+
+```
+from rios import applier
+from rios.computemanager import ECSComputeWorkerMgr
+...
+extra_params = ECSComputeWorkerMgr.makeExtraParams_Fargate(
+    jobName='myjobname',
+    subnets=mysubnets,
+    containerImage=MyECRImage,
+    taskRoleArn=MyECSTaskRoleARN,
+    executionRoleArn=MyECSTaskExecutionRoleARN,
+    securityGroups=MySecurityGroup,
+    cpu='2 vCPU', memory='16GB', cpuArchitecture='ARM64')
+
+conc = applier.ConcurrencyStyle(
+            computeWorkerKind=applier.CW_ECS,
+            computeWorkerExtraParams=extra_params,
+            ...)
+controls.setConcurrencyStyle(conc)
+```
+
+Note how you can adjust memory, CPU and CPU Architecture. See [makeExtraParams_Fargate](https://www.rioshome.org/en/latest/rios_computemanager.html#rios.computemanager.ECSComputeWorkerMgr.makeExtraParams_Fargate) for a more thorough description of these options.
+Note that you may well need to create these resources before hand with CloudFormation/CDK/Terraform. A future blog post may cover this in more detail.
+
+# ECS with Private Cluster
+
+Setting up an ECS Private Cluster is more work, but gives you far more control over the kind of
+CPU that can be chosen (GPU etc) and you can even control the AMI that the VMs will run. However, it will be slower to start. Below is an example of setting up a Private Cluster with the helper function  [makeExtraParams_PrivateCluster](https://www.rioshome.org/en/latest/rios_computemanager.html#rios.computemanager.ECSComputeWorkerMgr.makeExtraParams_PrivateCluster):
+
+```
+from rios import applier
+from rios.computemanager import ECSComputeWorkerMgr
+...
+extra_params = ECSComputeWorkerMgr.makeExtraParams_PrivateCluster(
+            jobName='myjobname`,
+            numInstances=computeworkers,
+            ami='ami-08b5d886b9289bc63',
+            instanceType='c7g.2xlarge',
+            containerImage=MyECRImage,
+            taskRoleArn=MyECSTaskRoleARN,
+            executionRoleArn=MyECSTaskExecutionRoleARN,
+            subnet=subnets[0],
+            securityGroups=MySecurityGroup,
+            instanceProfileArn=MyInstanceProfileARN,
+            memoryReservation=16384)
+
+conc = applier.ConcurrencyStyle(
+            computeWorkerKind=applier.CW_ECS,
+            computeWorkerExtraParams=extra_params,
+            ...)
+controls.setConcurrencyStyle(conc)
+```
+
+So this helper function requires more information and is a little more work to set up. You can control the instance type that
+is right for your job. You do have to specify an AMI which can be obtained using one of the methods described in the
+[AWS documentation](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/retrieve-ecs-optimized_AMI.html).
+More information on the parameters can be found in the [RIOS documentation](https://www.rioshome.org/en/latest/rios_computemanager.html#rios.computemanager.ECSComputeWorkerMgr.makeExtraParams_Fargate).
+
+# Conclusion
+
+My supporting AWS ECS, RIOS provides another option for parallelising your processing. Although there is still some work
+involved in configuring your infrastructure, RIOS hides most of the details of creating an ECS cluster while still
+allowing some customisation.
+For alternative methods for parallelising your workflow, see the [RIOS documentation](https://www.rioshome.org/en/latest/concurrency.html#compute-worker-kinds).
