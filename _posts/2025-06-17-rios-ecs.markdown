@@ -8,7 +8,7 @@ categories: tutorial
 # Introduction
 
 This post is a quick introduction to the new AWS ECS parallel processing feature in RIOS.
-This feature is intended for CPU intensive jobs - this is unlikely to speed up I/O bounds jobs.
+This feature is intended for CPU intensive jobs - it is unlikely to speed up I/O bounds jobs.
 
 # AWS ECS
 
@@ -51,7 +51,7 @@ controls.setConcurrencyStyle(conc)
 ```
 
 Note how you can adjust memory, CPU and CPU Architecture. See [makeExtraParams_Fargate](https://www.rioshome.org/en/latest/rios_computemanager.html#rios.computemanager.ECSComputeWorkerMgr.makeExtraParams_Fargate) for a more thorough description of these options.
-Note that you may well need to create these resources before hand with CloudFormation/CDK/Terraform. A future blog post may cover this in more detail.
+Note that you may well need to create these resources beforehand with CloudFormation/CDK/Terraform. A future blog post may cover this in more detail.
 
 # ECS with Private Cluster
 
@@ -72,8 +72,7 @@ extra_params = ECSComputeWorkerMgr.makeExtraParams_PrivateCluster(
             executionRoleArn=MyECSTaskExecutionRoleARN,
             subnet=subnets[0],
             securityGroups=MySecurityGroup,
-            instanceProfileArn=MyInstanceProfileARN,
-            memoryReservation=16384)
+            instanceProfileArn=MyInstanceProfileARN)
 
 conc = applier.ConcurrencyStyle(
             computeWorkerKind=applier.CW_ECS,
@@ -89,7 +88,7 @@ More information on the parameters can be found in the [RIOS documentation](http
 
 # Conclusion
 
-My supporting AWS ECS, RIOS provides another option for parallelising your processing. Although there is still some work
+By supporting AWS ECS, RIOS provides another option for parallelising your processing. Although there is still some work
 involved in configuring your infrastructure, RIOS hides most of the details of creating an ECS cluster while still
 allowing some customisation.
-For alternative methods for parallelising your workflow, see the [RIOS documentation](https://www.rioshome.org/en/latest/concurrency.html#compute-worker-kinds).
+For alternative methods for parallelising your workflow, see the RIOS documentation for  [makeExtraParams_PrivateCluster](https://www.rioshome.org/en/latest/concurrency.html#compute-worker-kinds).
