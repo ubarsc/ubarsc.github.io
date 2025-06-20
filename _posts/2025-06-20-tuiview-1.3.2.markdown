@@ -1,0 +1,22 @@
+---
+layout: post
+title:  "TuiView 1.3.2 released"
+date:   2025-06-20 08:00:00 +1000
+categories: update
+---
+
+[TuiView](https://tuiview.org/) 1.3.2 has been released. This is a larger major release than normal
+and includes such features as:
+
+* Support for colour tables in thematic images. Previously only colour tables within the Raster Attribute
+Table were used, but some formats prefer colour tables (which are dealt with separately by GDAL).
+* Export selected RAT rows from the Query Window as .csv
+* Improved stretch window - stretch parameters can be varied by band. Also stretch can be copy and pasted between windows.
+* Support for RGBA images.
+
+For more information see the [list of changes](https://github.com/ubarsc/tuiview/blob/master/CHANGES.txt).
+
+```
+Be careful exporting .stretch files - those using the new stretch 
+window features may not be compatible with older versions of TuiView.
+```
