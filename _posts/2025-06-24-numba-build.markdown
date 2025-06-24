@@ -16,7 +16,8 @@ at fixed versions in a given Ubuntu release. However, the Numba package cannot a
 be relied on to exist for every Ubuntu release. It has also been broken on ARM64 in some
 versions. Fortunately, building Numba from source isn't actually too hard. Some 
 [instructions](https://numba.readthedocs.io/en/stable/user/installing.html#installing-from-source)
-do exist which this recipe is based on. 
+do exist which this recipe is based on. This recipe should actually work on most Linux
+distributions but has only been tested on Ubuntu.
 
 Firstly, consult [the Numba version information](https://numba.readthedocs.io/en/stable/user/installing.html#version-support-information)
 table to determine a supported LLVM/llvmlite/Numba version combination and export these as 
