@@ -12,7 +12,7 @@ to have more control over how it is built and the version that is used in a clou
 setting. 
 
 Ubuntu is a common choice for cloud computing. It provides many useful packages that remain
-at fixed versions in a given Ubuntu release. However, the Numba package connot always
+at fixed versions in a given Ubuntu release. However, the Numba package cannot always
 be relied on to exist for every Ubuntu release. It has also been broken on ARM64 in some
 versions. Fortunately, building Numba from source isn't actually too hard. Some 
 [instructions](https://numba.readthedocs.io/en/stable/user/installing.html#installing-from-source)
