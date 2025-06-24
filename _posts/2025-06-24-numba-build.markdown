@@ -51,9 +51,9 @@ cd llvm-project-${LLVM_VERSION}.src
 
 Apply the provided patches and use the provided `build.sh` to compile LLVM statically. Static LLVM is the preferred method for building
 Numba. This ensures no conflicts with other versions of LLVM that may be present on the system - since there are a 
-number of custom patches required this is a sensible precaution. Install static LLVM to `tmp/llvmout`.
+number of custom patches required this is a sensible precaution. Install static LLVM to `/tmp/llvmout`.
 
-Ensure `set -e` is set on their build.sh so any sub command faiure stops the build - this is similar to how conda does it.
+Ensure `set -e` is set on their `build.sh` so any sub command failure stops the build - this is similar to how conda does it.
 
 ```
 cd llvm-project-${LLVM_VERSION}.src
@@ -71,7 +71,7 @@ LLVM_CONFIG=/tmp/llvmout/bin/llvm-config python3 setup.py install --prefix=${MY_
 cd ..
 ```
 LLVM is no longer needed at this point as the necessary parts have been linked into `llvmlite` statically. 
-Nexit, clean up:
+Next, clean up:
 ```
 rm -rf llvm-project-${LLVM_VERSION}.src.tar.xz \
     llvm-project-${LLVM_VERSION}.src \
@@ -91,7 +91,7 @@ rm -rf ${NUMBA_VERSION}.tar.gz numba-${NUMBA_VERSION}
 ```
 
 Probably a good idea to run some tests at this point. You will need to ensure that your `PYTHONPATH` includes
-your install locatiotion if you have set `MY_PREFIX` to something non standard:
+your install location if you have set `MY_PREFIX` to something non standard.
 ```
 python3 -c "import numba"
 python3 -m numba.runtests
