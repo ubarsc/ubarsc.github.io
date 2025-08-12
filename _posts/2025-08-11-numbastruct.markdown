@@ -24,7 +24,7 @@ these are much much quicker than using normal Python lists and dictionaries. The
 are implemented in compiled code and @jit'ed code accesses them directly rather
 than going via the interpreter.
 
-The main thing to note as these containers are typed. This means that the types
+The main thing to note is that these containers are typed. This means that the types
 stored in them are set and they cannot contain a mix of types (unlike Python containers).
 
 From inside @jit-ed code you can create these containers much like you can in 
@@ -167,7 +167,7 @@ def testcreateobj():
     obj.accumulate(arr)
 ```
 
-The whole `MyTestObject` object is now complied code. Note that you can use `types.optional` to
+The whole `MyTestObject` object is now compiled code. Note that you can use `types.optional` to
 flag that a field can be None:
 
 ```
@@ -182,7 +182,7 @@ class MyTestObject:
         self.best_array = None
 ```
 
-You can also have lists or dictionaries as attribuites of your class:
+You can also have lists or dictionaries as attributes of your class:
 ```
 spec = [('count', types.uint32), 
     ('sum', types.uint64), 
