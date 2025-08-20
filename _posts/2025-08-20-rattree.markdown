@@ -7,11 +7,16 @@ categories: tutorial
 
 # Introduction
 
-[RatTree](https://github.com/gillins/rattree) is a tool for building Raster Attribute Tables
-from a number of thematic images. Each unique combination of the thematic layers ends up
-with its own row in the Raster Attribute Tables allowing more complex processing to happen.
+[RatTree](https://github.com/gillins/rattree) is a tool for building Raster Attribute Tables 
+from a number of thematic images. The output image is
+created as the intersection of the input images. Pixels which have the same combination of values in all
+the input images are assigned a common value in the output, and the various input values are carried
+over as attribute values for that output pixel value. Thus each unique combination of the thematic layers
+ends up with its own row in the Raster Attribute Tables, allowing more complex processing to happen.
+
 This tool is an example of building more [complex data structres in Numba](../07/numbastruct.html) 
-as it creates tree data structures to allow faster searching.
+as it creates tree data structures to allow faster searching. There is also a memory saving as only
+combinations of values found in the input data are stored.
 
 # Creating an input CSV
 
