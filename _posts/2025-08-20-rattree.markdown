@@ -1,0 +1,64 @@
+---
+layout: post
+title:  "Creating Raster Attribute Tables from Thematic Images with RatTree"
+date:   2025-08-20 8:00:00 +1000
+categories: tutorial
+---
+
+# Introduction
+
+[RatTree](https://github.com/gillins/rattree) is a tool for building Raster Attribute Tables 
+from a number of thematic images. The output image is
+created as the intersection of the input images. Pixels which have the same combination of values in all
+the input images are assigned a common value in the output, and the various input values are carried
+over as attribute values for that output pixel value. Thus each unique combination of the thematic layers
+ends up with its own row in the Raster Attribute Tables, allowing more complex processing to happen.
+
+This tool is an example of building more [complex data structres in Numba](../07/numbastruct.html) 
+as it creates tree data structures to allow faster searching. There is also a memory saving as only
+combinations of values found in the input data are stored.
+
+# Creating an input CSV
+
+RatTree is both a Python module and a command line utility (`rattree_fromimages`). 
+We cover the command line here but if you need lower level access please consult 
+the docstrings for the rattree module.
+
+The command line utility takes a path to a .csv file that contains a list of paths to the
+thematic files and columns names that they are to receive in the Raster Attribute Table.
+
+An example .csv file would look like this:
+
+```
+image_0.img,column 0
+image_1.img,column 1
+image_2.img,column 2
+```
+
+The resulting RAT will look like this:
+
+| Histogram | column 0 | column 1 | column 2 |
+-----------:|---------:|---------:|---------:|
+| 23341 | 45 | 98 | 12 |
+| 34553 | 67 | 12 | 78 |
+
+Where the contents of the columns will be the values from the images. Each unique combination
+of these values gets its own row in the RAT.
+
+# Running RatTree from the command line
+
+RatTree needs Numba, GDAL and RIOS installed to run. Having the KEA format installed with GDAL is recommended.
+Install RatTree with the following command:
+
+```
+pip install git+https://github.com/gillins/rattree.git
+```
+
+Once installed, run `rattree_fromimages` from the command line. Passing the `-h` flag gives
+the usage. Here is in example of how to run it assuming that your .csv file is saved as
+`imagelist.csv`:
+
+```
+rattree_fromimages -i imagelist.csv -o result.kea
+```
+
