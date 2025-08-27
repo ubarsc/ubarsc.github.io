@@ -12,7 +12,7 @@ we cover another lesser known feature of Numba - the ability to call C directly.
 
 # ctypes
 
-Python as always had the ability to invoke C using the [`ctypes` module](https://docs.python.org/3/library/ctypes.html).
+Python has always had the ability to invoke C using the [`ctypes` module](https://docs.python.org/3/library/ctypes.html).
 This is a very handy feature when you need to access functionality not normally available in Python.
 However, the main limitation is speed when you need to invoke a function from within a loop.
 
