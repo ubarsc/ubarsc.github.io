@@ -118,6 +118,26 @@ decorator that releases the Python GIL and allows your threads to run all at onc
 If you remove the locking then you will see that `result` does not add up to 100 as values will get overridden by
 other threads between reading and writing in a random manner.
 
+# Using `ctypes.c_void_p` with @jitclass
+
+Sometimes it is desirable to wrap a collection of C functions within a @jitclass. All `ctypes` types
+should map obviously to Numba types, the exception is `ctypes.c_void_p` which can be mapped to 
+`types.intp` as shown below:
+
+```
+from numba.core import types
+from numba.experimental import jitclass
+...
+
+spec = [('ptr', types.intp)]
+@jitclass(spec)
+class MyLock:
+    def __init__(self):
+        self.ptr = LOCK_CREATE()
+    ...
+```
+
+
 # Calling out to libraries with more complex interfaces
 
 Where this approach can fall down is when calling more complex interfaces: ones with structures that get passed around
