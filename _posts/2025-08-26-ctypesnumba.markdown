@@ -155,8 +155,8 @@ of this approach.
 
 # Passing a numpy array into a C function
 
-`qhull` requires a C array with the input data. Fortunately what is expected matches the layout of a numpy array.
-In this situation, we can pass data stright in as a `ctypes.c_void_p` from the  [`ctypes.data`](https://numpy.org/doc/2.1/reference/generated/numpy.ndarray.ctypes.html) property of a numpy array.
+`qhull` requires a C array with the input data. Fortunately what is expected matches the default layout of a numpy array.
+In this situation, we can pass data straight in as a `ctypes.c_void_p` from the  [`ctypes.data`](https://numpy.org/doc/2.1/reference/generated/numpy.ndarray.ctypes.html) property of a numpy array.
 We do have to check that the types, dimensions and layout match what [is expected](https://github.com/gillins/ctypesqhull?tab=readme-ov-file#how-to-use) otherwise you will get incorrect 
 results (or program crash).
 

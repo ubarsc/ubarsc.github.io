@@ -41,6 +41,7 @@ The resulting RAT will look like this:
 -----------:|---------:|---------:|---------:|
 | 23341 | 45 | 98 | 12 |
 | 34553 | 67 | 12 | 78 |
+|   ... | ... | ... | ... |
 
 Where the contents of the columns will be the values from the images. Each unique combination
 of these values gets its own row in the RAT.
