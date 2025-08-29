@@ -1,0 +1,11 @@
+---
+layout: post
+title:  "RIOS 2.0.8"
+date:   2025-08-29 11:40:00 +1000
+categories: update
+---
+
+The latest RIOS release (2.0.8) includes improved error handling for
+CW_ECS compute workers, and support for gdal.GDT_Int8 output rasters. See
+[Release Notes](https://www.rioshome.org/en/latest/releasenotes.html#version-2-0-8-2025-08-29)
+for more information.
