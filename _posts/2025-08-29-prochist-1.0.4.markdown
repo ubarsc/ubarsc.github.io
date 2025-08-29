@@ -1,0 +1,11 @@
+---
+layout: post
+title:  "processinghistory 1.0.4"
+date:   2025-08-29 11:50:00 +1000
+categories: update
+---
+
+The latest release of processinghistory (1.0.4) includes explicit support for
+history in VRT files. See
+[Release Notes](https://github.com/ubarsc/processinghistory/blob/main/ReleaseNotes.md)
+for more information.
