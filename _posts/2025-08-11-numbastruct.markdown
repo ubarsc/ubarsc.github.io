@@ -30,7 +30,7 @@ stored in them are set and they cannot contain a mix of types (unlike Python con
 From inside @jit-ed code you can create these containers much like you can in 
 Python and the types will be inferred by Numba:
 
-```
+```python
 import numpy
 from numba import njit
 from numba.typed import List
@@ -55,7 +55,7 @@ def my_dictionary_func():
 However you can also create these types ahead of time and pass them into Numba
 (can also be inferred if you don't want to set the type explictly):
 
-```
+```python
 import numpy
 from numba import njit
 from numba.core import types
@@ -86,7 +86,7 @@ mydictfunc(d)
 
 You can explicitly create these containers in @jit-ed code also:
 
-```
+```python
 @njit
 def mycreatedictfunc():
     d = Dict.empty(key_type=types.uint32, value_type=types.uint8[:])
@@ -105,7 +105,7 @@ modules of [pyshepseg](https://github.com/ubarsc/pyshepseg).
 
 It is also possible to create lists of dictionaries or dictionaries of lists:
 
-```
+```python
 list_of_dict = List.empty_list(types.DictType(types.uint32, types.float64))
 d1 = Dict.empty(key_type=types.uint32, value_type=types.float64)
 d1[19] = 6.7
@@ -124,14 +124,14 @@ If you don't know the types ahead of time you can use `typeof` to determine this
 For example, if you had an input array `myarray` that you don't know what the type is until 
 it is read from file, you can do something like this to create a dictionary of this type of array:
 
-```
+```python
 from numba import typeof
 dict_of_array = Dict.empty(key_type=types.uint32, value_type=typeof(myarray))
 ```
 
 You can also get the Numba type of a single element of an array if you want to store one value
 rather than the whole thing:
-```
+```python
 dict_of_scalar = Dict.empty(key_type=types.uint32, value_type=typeof(myarray[0]))
 ```
 
@@ -142,7 +142,7 @@ This is where [@jitclass](https://numba.readthedocs.io/en/stable/user/jitclass.h
 Basically it allows you to compile a class to called from @jit-ed code. To help Numba you need
 to specify the types of each of the attributes and these are now fixed (like the typed containers):
 
-```
+```python
 from numba.experimental import jitclass
 
 spec = [('count', types.uint32), 
@@ -170,7 +170,7 @@ def testcreateobj():
 The whole `MyTestObject` object is now compiled code. Note that you can use `types.optional` to
 flag that a field can be None:
 
-```
+```python
 spec = [('count', types.uint32), 
     ('sum', types.uint64), 
     ('best_array', types.optional(types.uint8[:]))]
@@ -183,7 +183,7 @@ class MyTestObject:
 ```
 
 You can also have lists or dictionaries as attributes of your class:
-```
+```python
 spec = [('count', types.uint32), 
     ('sum', types.uint64), 
     ('mylist', types.ListType(types.uint8[:]))]
@@ -202,7 +202,7 @@ class MyTestObject:
 
 Also, you can embed one object within another (note slightly clunky syntax for getting the type of a @jitclass):
 
-```
+```python
 spec1 = [('count', types.uint32)]
 @jitclass(spec1)
 class MyTestObject1:
@@ -226,7 +226,7 @@ class MyTestObject2:
 ```
 
 Of course you can embed an object of the same type within an object using `deferred_type`:
-```
+```python
 from numba import deferred_type
 
 spec = [('count', types.uint32), 
@@ -256,7 +256,7 @@ But - what about when you don't know one or more field types ahead of time? Well
 can be called as a function with the types at runtime. Note that this returns a type
 which can then passed into a Numba function and instantiated.
 
-```
+```python
 myarray = ...
 
 class MyTestObjectDynamic:

@@ -30,7 +30,7 @@ Fargate is a mode of ECS that is much easier to use - AWS has a fleet of VMs tha
 running and can be added to your ECS cluster with the mimimum of hassle (and speed). Here is an exampe
 of how you might start and ECS Fargate cluster using the helper function [makeExtraParams_Fargate](https://www.rioshome.org/en/latest/rios_computemanager.html#rios.computemanager.ECSComputeWorkerMgr.makeExtraParams_Fargate):
 
-```
+```python
 from rios import applier
 from rios.computemanager import ECSComputeWorkerMgr
 ...
@@ -58,7 +58,7 @@ Note that you may well need to create these resources beforehand with CloudForma
 Setting up an ECS Private Cluster is more work, but gives you far more control over the kind of
 CPU that can be chosen (GPU etc) and you can even control the AMI that the VMs will run. However, it will be slower to start. Below is an example of setting up a Private Cluster with the helper function  [makeExtraParams_PrivateCluster](https://www.rioshome.org/en/latest/rios_computemanager.html#rios.computemanager.ECSComputeWorkerMgr.makeExtraParams_PrivateCluster):
 
-```
+```python
 from rios import applier
 from rios.computemanager import ECSComputeWorkerMgr
 ...

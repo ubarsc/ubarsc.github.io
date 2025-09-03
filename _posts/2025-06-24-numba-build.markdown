@@ -23,7 +23,7 @@ Firstly, consult [the Numba version information](https://numba.readthedocs.io/en
 table to determine a supported LLVM/llvmlite/Numba version combination and export these as 
 environment variables. For example:
 
-```
+```bash
 export LLVM_VERSION=15.0.7
 export LLVMLITE_VERSION=0.44.0
 export NUMBA_VERSION=0.61.2
@@ -31,7 +31,7 @@ export NUMBA_VERSION=0.61.2
 
 Also set an environmental variable for where you wish to install Numba. Normally, this is `/usr` but you 
 may which to install Numba in a separate location.
-```
+```bash
 export MY_PREFIX=/usr
 ```
 
@@ -40,7 +40,7 @@ You will also need to ensure `g++`, `cmake`, `make`, `patch` and `python3` Ubunt
 Download llvm and llvmlite at the same time as we need the patches and build instructions from the latter. Extract
 to `/tmp` and get ready for compliation:
 
-```
+```bash
 cd /tmp
 wget https://github.com/llvm/llvm-project/releases/download/llvmorg-${LLVM_VERSION}/llvm-project-${LLVM_VERSION}.src.tar.xz
 wget https://github.com/numba/llvmlite/archive/refs/tags/v${LLVMLITE_VERSION}.tar.gz
@@ -55,7 +55,7 @@ number of custom patches required this is a sensible precaution. Install static 
 
 Ensure `set -e` is set on their `build.sh` so any sub command failure stops the build - this is similar to how conda does it.
 
-```
+```bash
 cd llvm-project-${LLVM_VERSION}.src
 for p in ../llvmlite-${LLVMLITE_VERSION}/conda-recipes/*.patch; do patch -p1 -i $p; done
 echo "set -e" > ./mybuild.sh
@@ -65,14 +65,14 @@ cd ..
 ```
 
 Now compile and install llvmlite, telling it where to find LLVM:
-```
+```bash
 cd llvmlite-${LLVMLITE_VERSION}
 LLVM_CONFIG=/tmp/llvmout/bin/llvm-config python3 setup.py install --prefix=${MY_PREFIX}
 cd ..
 ```
 LLVM is no longer needed at this point as the necessary parts have been linked into `llvmlite` statically. 
 Next, clean up:
-```
+```bash
 rm -rf llvm-project-${LLVM_VERSION}.src.tar.xz \
     llvm-project-${LLVM_VERSION}.src \
     v${LLVMLITE_VERSION}.tar.gz \
@@ -81,7 +81,7 @@ rm -rf llvm-project-${LLVM_VERSION}.src.tar.xz \
 ```
 
 Last step is to install Numba itself:
-```
+```bash
 wget https://github.com/numba/numba/archive/refs/tags/${NUMBA_VERSION}.tar.gz
 tar xf ${NUMBA_VERSION}.tar.gz
 cd numba-${NUMBA_VERSION}
@@ -92,7 +92,7 @@ rm -rf ${NUMBA_VERSION}.tar.gz numba-${NUMBA_VERSION}
 
 Probably a good idea to run some tests at this point. You will need to ensure that your `PYTHONPATH` includes
 your install location if you have set `MY_PREFIX` to something non standard.
-```
+```python
 python3 -c "import numba"
 python3 -m numba.runtests
 ```
