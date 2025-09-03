@@ -27,7 +27,7 @@ us the same speed as invoking from C.
 Below is a simple example (for Linux) of loading the C runtime library and invoking the `sleep` function
 from inside Numba.
 
-```
+```python
 import ctypes
 from numba import njit
 
@@ -53,7 +53,7 @@ function or undefined behaviour will result.
 
 A more useful example is locking access to a shared array from multiple threads:
 
-```
+```python
 import ctypes
 import threading
 import numpy
@@ -124,7 +124,7 @@ Sometimes it is desirable to wrap a collection of C functions within a @jitclass
 should map obviously to Numba types, the exception is `ctypes.c_void_p` which can be mapped to 
 `types.intp` as shown below:
 
-```
+```python
 from numba.core import types
 from numba.experimental import jitclass
 ...

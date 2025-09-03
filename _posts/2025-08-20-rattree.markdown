@@ -51,7 +51,7 @@ of these values gets its own row in the RAT.
 RatTree needs Numba, GDAL and RIOS installed to run. Having the KEA format installed with GDAL is recommended.
 Install RatTree with the following command:
 
-```
+```bash
 pip install git+https://github.com/gillins/rattree.git
 ```
 
@@ -59,7 +59,7 @@ Once installed, run `rattree_fromimages` from the command line. Passing the `-h`
 the usage. Here is in example of how to run it assuming that your .csv file is saved as
 `imagelist.csv`:
 
-```
+```bash
 rattree_fromimages -i imagelist.csv -o result.kea
 ```
 

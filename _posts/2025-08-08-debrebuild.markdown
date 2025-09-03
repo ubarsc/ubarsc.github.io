@@ -26,7 +26,7 @@ instead of the more standard `diff` tool. Debian keeps the source code for all t
 packages for each release so instead of having to work out where the source code is
 for your release, it can be found quite easily. Obtain the source for GDAL like this:
 
-```
+```bash
 # Install prereqs
 sudo apt-get install -y devscripts equivs quilt
 # backup
@@ -43,7 +43,7 @@ gdal-3.10.2+dfsg
 
 Next, create a quilt patch based on the commands (see [the Debian wiki on quilt](https://wiki.debian.org/UsingQuilt)):
 
-```
+```bash
 # Create a new patch
 quilt new mypatch.patch
 # add any source files you wish to patch
@@ -64,7 +64,7 @@ quilt pop -a
 To actually rebuild GDAL with this patch run something like the following 
 (based on [these instructions](https://www.linuxjournal.com/content/rebuilding-and-modifying-debian-packages)):
 
-```
+```bash
 # (assume the same prereqs are installed)
 # copy the new patch into the source tree
 cp mypatch.patch debian/patches
