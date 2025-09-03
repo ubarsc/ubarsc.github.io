@@ -1,0 +1,133 @@
+---
+layout: post
+title:  "Getting information about a file with rios.fileinfo"
+date:   2025-09-03 8:00:00 +1000
+categories: tutorial
+---
+
+# Introduction
+
+When writing a script to process GDAL/OGR data it is often necessary
+to be able to determine various properties of input file(s). This can
+be for both checking the inputs are valid or to provide sensible behaviour 
+depending on some of these properties.
+
+# Getting information on a raster file
+
+For rasters, the main class is [ImageInfo](https://www.rioshome.org/en/latest/rios_fileinfo.html#rios.fileinfo.ImageInfo). This can be used as in the example below:
+
+```python
+from rios.fileinfo import ImageInfo
+...
+info = ImageInfo('abc.kea')
+print(info)
+```
+
+This produces output similar to the following. The names in the first column are the fields of the object. These are discussed
+in more detail in [the documentation](https://www.rioshome.org/en/latest/rios_fileinfo.html#rios.fileinfo.ImageInfo).
+
+```
+nrows               779
+ncols               772
+rasterCount         1
+xMin                413385.0
+xMax                644985.0
+yMin                -3151485.0
+yMax                -2917785.0
+xRes                300.0
+yRes                300.0
+lnames              ['Band 1']
+layerType           thematic
+dataType            1
+dataTypeName        Byte
+nodataval           [0.0]
+transform           (413385.0, 300.0, 0.0, -2917785.0, 0.0, -300.0)
+projection          PROJCS["WGS 84 / UTM zone 56N",...
+
+```
+
+Note how much easier this is compared with opening the file in GDAL and working with the geotransform to work out the bounds. Then
+iterating through the bands for the band specific information...
+
+# Statistics
+
+There is also a [ImageFileStats class](https://www.rioshome.org/en/latest/rios_fileinfo.html#rios.fileinfo.ImageFileStats) that can
+be used to obtain statistics on each band in a raster. It works by returning a [ImageLayerStats](https://www.rioshome.org/en/latest/rios_fileinfo.html#rios.fileinfo.ImageLayerStats)
+object for each band:
+
+```python
+from rios.fileinfo import ImageFileStats
+...
+stats = ImageFileStats('abc.kea')
+print(stats[0])
+```
+
+This example will print something like the following which produces a summary of the statistics:
+
+```
+Mean: 5.444528324476045, Stddev: 6.186597095823568, Min: 0.0, Max: 20.0, Median: 3, Mode: 3
+```
+
+There are more fields than shown, please refer to [the documentation](https://www.rioshome.org/en/latest/rios_fileinfo.html#rios.fileinfo.ImageLayerStats)
+for more information.
+
+# Raster Attribute Tables
+
+The [RatStats](https://www.rioshome.org/en/latest/rios_fileinfo.html#rios.fileinfo.RatStats) class provides a summary of the statistics on each 
+of the (numeric) columns in the Raster Attribute Table (RAT) of a thematic raster. This is done by accessing the name of the column as an attribute on the object:
+
+```python
+from rios.fileinfo import RatStats
+...
+rat = RatStats('abc.kea')
+print(rat.Histogram)
+```
+
+Note that only numeric columns are provided. Each column in the RAT is a [ColumnStats](https://www.rioshome.org/en/latest/rios_fileinfo.html#rios.fileinfo.ColumnStats) 
+object:
+
+```
+Count: 419147.0, Mean: 95852.37478259417, Stddev: 88020.35324744815, Min: 5.0, Max: 191676.0, Median: None, Mode: None
+```
+
+If you have many columns in your RAT you can speed up access by passing the `columnlist` parameter to the `RatStats` constructor with a subset of
+the column names.
+
+# Vector files
+
+Lastly, `fileinfo` also has the ability to obtain a summary of vector files with the [VectorFileInfo](https://www.rioshome.org/en/latest/rios_fileinfo.html#rios.fileinfo.VectorFileInfo)
+class. Similar to the `ImageFileStats` class you can index an object of this type with the index of the layer:
+
+```python
+from rios.fileinfo import VectorFileInfo
+...
+vinfo = VectorFileInfo('poly.shp')
+print(vinfo[0])
+```
+
+This produces a nice summary (below). As usual [the documentation](https://www.rioshome.org/en/latest/rios_fileinfo.html#rios.fileinfo.VectorLayerInfo) contains
+more information about the fields.
+
+```
+  featureCount: 1
+  xMin: 484925.81632653065
+  xMax: 512179.46064139943
+  yMin: -3023733.5422740523
+  yMax: -2993073.192419825
+  geomType: 3
+  geomTypeStr: Polygon
+  fieldCount: 1
+  fieldNames: ['FID']
+  fieldTypes: [12]
+  fieldTypeNames: ['Integer64']
+  spatialRef: PROJCS["WGS 84 / UTM zone 56N",
+    GEOGCS["WGS 84",
+        DATUM["WGS_1984",
+        ...
+```
+
+# Conclusion
+
+The classes in [rios.fileinfo](https://www.rioshome.org/en/latest/rios_fileinfo.html) are very helpful for finding information about a file  
+in one or two lines of code. Without these classes the user would have to write more complex code and understand the complexities
+of the various GDAL/OGR function calls.
