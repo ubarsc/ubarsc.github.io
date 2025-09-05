@@ -1,0 +1,18 @@
+---
+layout: post
+title:  "TuiView 1.3.4 released"
+date:   2025-09-05 10:00:00 +1000
+categories: update
+---
+
+[TuiView](https://tuiview.org/) 1.3.4 has been released. This is a bugfix release
+that fixes an issue with selecting by expression in the RAT. There is also a fix
+for a problem introduced in 1.3.2 that can lead to files with a large RAT taking
+a long time to load.
+
+In addition to these fixes, the requirement for files to have their `LAYER_TYPE` metadata item 
+set to `thematic` before they are treated as thematic by TuiView has been removed. They
+now just need to have a RAT with colour columns or a colour table set before they are
+treated as thematic. This brings TuiView more in line with other software.
+ 
+For more information see the [list of changes](https://github.com/ubarsc/tuiview/blob/master/CHANGES.txt).
