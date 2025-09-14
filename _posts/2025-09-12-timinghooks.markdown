@@ -30,10 +30,6 @@ developer can put timing hooks around those two operations, and report the
 totals to the user, allowing the user to make informed choices about whether or
 not to move the data to a faster disk drive.
 
-1. Just report time taken in part of a function 
-2. Report time taken for a whole group of statements
-3. Collate similar steps into one timing
-
 # Installation
 
 `timinghooks` can be installed from the github repo like this:
