@@ -16,6 +16,10 @@ at the same time not giving us any improvement in speed.
 It is much more sensible to identify the parts of your script that are 
 really slow and spend effort optimising them.
 
+This article disusses ways to temporarily gather profile information during
+development. Refer to [our previous post on timinghooks](../../09/16/timinghooks.html)
+for a permanent way to embed timing information into your script.
+
 # cProfile
 
 [cProfile](https://docs.python.org/3/library/profile.html) is a Python
