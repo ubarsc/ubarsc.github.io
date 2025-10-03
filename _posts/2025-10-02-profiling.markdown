@@ -9,14 +9,14 @@ categories: tutorial
 
 Understanding where your script spends the bulk of the time is essential
 for any attempt to optimise it. Otherwise you may spend a lot of time
-trying to speen up sections that take almost no time at all. The risk
+trying to speed up sections that take almost no time at all. The risk
 is that the code can become more complex and harder to understand and
-at the same time not giving us any improvement in speed.
+at the same time not giving you any improvement in speed.
 
 It is much more sensible to identify the parts of your script that are 
 really slow and spend effort optimising them.
 
-This article disusses ways to temporarily gather profile information during
+This article discusses ways to temporarily gather profile information during
 development. Refer to [our previous post on timinghooks](../../09/16/timinghooks.html)
 for a permanent way to embed timing information into your script.
 
