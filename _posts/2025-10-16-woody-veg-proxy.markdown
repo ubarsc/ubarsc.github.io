@@ -12,7 +12,7 @@ woody vegetation layers.
 A proxy for woody vegetation density can be created by finding this
 minimum-green baseline using a satellite-image time series of NDVI.
 
-![minimum NDVI baseline](ndvi_time_series.png)
+![minimum NDVI baseline]({{site.url}}/images/ndvi_time_series.png)
 
 [NDVI is a measure of vegetation greeness](https://en.wikipedia.org/wiki/Normalized_difference_vegetation_index).
 It is calculated from the red and near-infrared image bands.
@@ -25,7 +25,7 @@ The processing workflow is:
 - calculate the 5th percentile of NDVI for each tile using RIOS
 - stitch the tiles together using Moamosaic
 
-![woody vegetation density proxy](ndvi_percentile_map_3.png)
+![woody vegetation density proxy]({{site.url}}/images/ndvi_percentile_map_3.png)
 
 We used over a million input layers.
 Images from 973 Sentinel-2 tiles are required to cover Australia.

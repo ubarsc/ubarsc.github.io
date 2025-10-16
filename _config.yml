@@ -20,7 +20,7 @@
 
 title: UBARSC - The UB&A Remote Sensing Centre
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://ubarsc.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Build settings
 theme: minima
