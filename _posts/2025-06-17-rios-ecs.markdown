@@ -40,7 +40,7 @@ extra_params = ECSComputeWorkerMgr.makeExtraParams_Fargate(
     containerImage=MyECRImage,
     taskRoleArn=MyECSTaskRoleARN,
     executionRoleArn=MyECSTaskExecutionRoleARN,
-    securityGroups=MySecurityGroup,
+    securityGroups=[MySecurityGroup],
     cpu='2 vCPU', memory='16GB', cpuArchitecture='ARM64')
 
 conc = applier.ConcurrencyStyle(
@@ -71,7 +71,7 @@ extra_params = ECSComputeWorkerMgr.makeExtraParams_PrivateCluster(
             taskRoleArn=MyECSTaskRoleARN,
             executionRoleArn=MyECSTaskExecutionRoleARN,
             subnet=subnets[0],
-            securityGroups=MySecurityGroup,
+            securityGroups=[MySecurityGroup],
             instanceProfileArn=MyInstanceProfileARN)
 
 conc = applier.ConcurrencyStyle(
