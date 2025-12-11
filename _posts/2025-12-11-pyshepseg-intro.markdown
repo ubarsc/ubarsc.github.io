@@ -74,10 +74,10 @@ Note that because of the overlap, doing a tiles segmentation is less efficient t
 segmentation. However, it does allow you to segment very large images. For information about
 running the tiled segmentation in parallel, please see [our previous blog post](../03/pyshepseg-fargate.html).
 
-# Calculating statistics
+# Calculating per-segment statistics
 
-`pyshepseg` also has support for calculating statistics from another image for each segment with the `tilingstats` module. This module processes the image in a tiled manner meaning that very large images
-can be processed. There are two functions, one for [non-spatial statistics](https://www.pyshepseg.org/en/latest/pyshepseg_tilingstats.html#pyshepseg.tilingstats.calcPerSegmentStatsTiled) and another one for [spatial statistics](https://www.pyshepseg.org/en/latest/pyshepseg_tilingstats.html#pyshepseg.tilingstats.calcPerSegmentSpatialStatsTiled). Here is an example calculating the mean of the first band that we used for the segmentation for each of the segments:
+`pyshepseg` also has support for calculating per-segment statistics from another image for each segment with the `tilingstats` module. This module processes the image in a tiled manner meaning that very large images
+can be processed. There are two functions, one for [non-spatial statistics](https://www.pyshepseg.org/en/latest/pyshepseg_tilingstats.html#pyshepseg.tilingstats.calcPerSegmentStatsTiled) and another one for [spatial statistics](https://www.pyshepseg.org/en/latest/pyshepseg_tilingstats.html#pyshepseg.tilingstats.calcPerSegmentSpatialStatsTiled). Here is an example calculating the mean (for each segment) of the first band that we used for the segmentation:
 
 ```python
 from pyshepseg import tilingstats
