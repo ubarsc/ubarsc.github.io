@@ -56,7 +56,7 @@ segmentation run.
 
 What happens if you have an image that is larger than can be fitted into memory? That's 
 where the [pyshepseg.tiling.doTiledShepherdSegmentation](https://www.pyshepseg.org/en/latest/pyshepseg_tiling.html#pyshepseg.tiling.doTiledShepherdSegmentation) function comes in. It is similar to `pyshepseg.shepseg.doShepherdSegmentation`
-but handles splitting the image into tiles, processing them and stictching the result together.
+but handles splitting the image into tiles, processing them and stitching the result together.
 Here is an example of processing the same image:
 
 ```python
