@@ -1,13 +1,13 @@
 ---
 layout: post
 title:  "Tiling with TuiView"
-date:   2025-01-02 10:00:00 +1000
+date:   2026-01-02 10:00:00 +1000
 categories: tutorial
 ---
 
 # Introduction
 
-[TuiView](https://tuiview.org/) is a simple raster viewer written in Python. Although,
+[TuiView](https://tuiview.org/) is a simple raster viewer written in Python. Although
 it is simpler than other GIS packages, it does have some features not commonly found 
 elsewhere. These include: geolinking viewers, default stretch for files base on their
 attributes and powerful raster attribute table (RAT) manipulation.
@@ -17,16 +17,27 @@ conda-forge.
 
 # Tiling
 
-Start tuiview at the command line by typing `tuiview`. A single window then appears
-which has buttons to open files and start other windows:
+Start TuiView at the command line by typing `tuiview`. A single window then appears
+which has buttons to open files (![Add Raster Icon](https://raw.githubusercontent.com/ubarsc/tuiview/refs/heads/master/resources/addraster.png)) 
+and start other windows (![Open New Window](https://raw.githubusercontent.com/ubarsc/tuiview/refs/heads/master/resources/newwindow.png)):
 
 ![TuiView Window]({{site.url}}/images/tuiview_window.png)
+
+Use the Zoom In(![Zoom In](https://raw.githubusercontent.com/ubarsc/tuiview/refs/heads/master/resources/zoomin.png)), 
+Zoom Out (![Zoom Out](https://raw.githubusercontent.com/ubarsc/tuiview/refs/heads/master/resources/zoomout.png)) 
+and Pan (![Pan](https://raw.githubusercontent.com/ubarsc/tuiview/refs/heads/master/resources/pan.png))
+to move around a loaded image. 
+
+**Note that by default, all windows zoom and pan together.** So when you are looking at
+an area with one, the others will be showing the same area. This behaviour can be
+disabled for a viewer by pressing the ![Follow Extents](https://raw.githubusercontent.com/ubarsc/tuiview/refs/heads/master/resources/followextents.png)
+button.
 
 Alternatively you can start `tuiview` with images already loaded from the command line 
 like this:
 
 ```bash
-tuiview --separate a.tif b.tif c.tif
+tuiview --separate a.tif b.kea c.kea d.kea
 ```
 
 This will create 3 windows, each with 1 file loaded. Without the `--separate` flag, 
@@ -49,3 +60,77 @@ in then move them into a rough location and TuiView will snap them to a tiled
 location.
 
 ![TuiView Tiled Windows]({{site.url}}/images/tuiview_tiled.png)
+
+# Stretching
+
+If you wish to change the stretch on an image, select "Stretch" from the "Edit" menu, or press 
+Ctrl+T. This brings up the stretch window as a docked sub window as shown below:
+
+![TuiView Stretch Window]({{site.url}}/images/tuiview_applystretch.png)
+
+Make changes to the stretch and click ![Apply Stretch](https://raw.githubusercontent.com/ubarsc/tuiview/refs/heads/master/resources/apply.png) to apply
+the stretch to the top loaded image in the window.
+
+If you use common stretches for your files, you may wish to configure these
+in the Default Stretch window (accessible from the "File" menu or Ctrl+D). This
+window is shown below and can be used to configure the default stretch that
+TuiView uses when it opens a file. Note that you can create a number of rules
+based on the attributes of a file (number of bands and whether there is a colour
+table present) and TuiView uses the stretch associated with that rule.
+
+![Default Stretch Dialog]({{site.url}}/images/tuiview_defaultstretch.png)
+
+Note that with the stretch window, you can save and restore the stretch to a GDAL file, a text
+file and the clipboard. This allows you to see images in the same way as colleagues.
+
+# Layer Window
+
+Press the ![Layers](https://raw.githubusercontent.com/ubarsc/tuiview/refs/heads/master/resources/layers.png)
+button to access the Layer Window. This shows all the files that are loaded in the current
+window. For example, if you start TuiView with some files but without the `--separate` flag
+you get them loaded on top of one another:
+
+```bash
+tuiview a.tif b.kea c.kea d.kea
+```
+
+![TuiView Layers]({{site.url}}/images/tuiview_layers.png)
+
+The ![Flicker](https://raw.githubusercontent.com/ubarsc/tuiview/refs/heads/master/resources/flickeron.png)
+button can be used to toggle the state of the top layer. The comma (,) and full stop (.) keys on the keyboard 
+can be used to move forward and back through the images like they are a timeseries.
+
+The tick boxes next to each file in the Layer Window can be used to turn individual files on and off.
+In addition, if you right-click on a file there is a context menu that can be used to access other
+functionality such as moving files up and down in the stack, removing them and editing their stretch.
+
+Files can be locked so that any new files opened appear below them (most useful for vector layers -
+see below).
+
+Top layers are removed the ![Remove Layer](https://raw.githubusercontent.com/ubarsc/tuiview/refs/heads/master/resources/removelayer.png) button
+on the tool bar.
+
+# Vectors
+
+Vectors can be loaded by pressing the ![Add Vector Icon](https://raw.githubusercontent.com/ubarsc/tuiview/refs/heads/master/resources/addvector.png) button, or
+loaded from the command line with the `--vector` flag (can be specified multiple times):
+
+```bash
+tuiview a.tif --vector soils_3577.gpkg
+```
+
+Note that usually TuiView will ask you the name of the layer to open. From the command line you
+can suppress this by specifying the layer name in the `--vectorlayer` option. Here is am example of
+how vectors are shown by default in TuiView, with the context menu from the Layer Window for the
+vector on top:
+
+![TuiView With Vector]({{site.url}}/images/tuiview_vector.png)
+
+Note that there are options here to change the colour used, the attribute filter, line width and
+to show labels among other things.
+
+# Conclusion
+
+TuiView is a modest package but does have many features of more complex GIS packages, plus some
+extras. This post has covered the basics of the viewing images. Another post will have details of how to 
+query raster and vector data in TuiView.
