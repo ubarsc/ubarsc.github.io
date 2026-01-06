@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Tiling with TuiView"
+title:  "Opening files and Tiling viewers with TuiView"
 date:   2026-01-02 10:00:00 +1000
 categories: tutorial
 ---
