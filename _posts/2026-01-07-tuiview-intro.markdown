@@ -23,6 +23,8 @@ and start other windows (![Open New Window](https://raw.githubusercontent.com/ub
 
 ![TuiView Window]({{site.url}}/images/tuiview_window.png)
 
+Alternatively, raster files can be dropped into the window and they will be opened.
+
 Use the Zoom In(![Zoom In](https://raw.githubusercontent.com/ubarsc/tuiview/refs/heads/master/resources/zoomin.png)), 
 Zoom Out (![Zoom Out](https://raw.githubusercontent.com/ubarsc/tuiview/refs/heads/master/resources/zoomout.png)) 
 and Pan (![Pan](https://raw.githubusercontent.com/ubarsc/tuiview/refs/heads/master/resources/pan.png))
@@ -63,7 +65,8 @@ location.
 
 # Stretching
 
-If you wish to change the stretch on an image, select "Stretch" from the "Edit" menu, or press 
+If you wish to change the stretch on an image, click the ![Stretch Button](https://raw.githubusercontent.com/ubarsc/tuiview/refs/heads/master/resources/stretch.png),
+select "Stretch" from the "Edit" menu, or press 
 Ctrl+T. This brings up the stretch window as a docked sub window as shown below:
 
 ![TuiView Stretch Window]({{site.url}}/images/tuiview_applystretch.png)
@@ -153,6 +156,10 @@ vector on top:
 
 Note that there are options here to change the colour used, the attribute filter, line width and
 to show labels among other things.
+
+It is important to note that TuiView expects to have a raster layer open before you add a vector.
+You may find strange behaviour if you do not load a raster layer in a window first. This is because
+TuiView is primarily a raster viewer and needs a raster to define its view of the world.
 
 # Conclusion
 
