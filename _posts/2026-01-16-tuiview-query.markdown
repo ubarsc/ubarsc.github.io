@@ -8,15 +8,14 @@ categories: tutorial
 # Introduction
 
 The basic operation of [TuiView](https://tuiview.org/) has been
-covered in a [previous post](../03/tuiview-intro.html). This post
+covered in a [previous post](../07/tuiview-intro.html). This post
 demostrate the querying functionality of TuiView on continuous
-rasters and Vector files. Querying thematic rasters will be the subject 
+rasters and vector files. Querying thematic rasters will be the subject 
 of a future post.
 
 # The Query Dock Window
 
-Once you have loaded file(s) in to your viewer, pressing the Query Window button ( ![Query Window](https://raw.githubusercontent.com/ubarsc/tuiview/refs/heads/master/resources/query.png)).
-The Query Dock Window will be displayed. Clicking a point within the
+Once you have loaded file(s) in to your viewer, press the Query Window button ( ![Query Window](https://raw.githubusercontent.com/ubarsc/tuiview/refs/heads/master/resources/query.png)) and the Query Dock Window will be displayed. Clicking a point within the
 raster will populate the values:
 
 ![Query Window]({{site.url}}/images/tuiview_query.png)
@@ -79,7 +78,7 @@ for seeing what is happening in the one spot in more than one image all at once:
 
 # Profile
 
-To see how values vary spacially, open the Profile Window by clicking the Profile Button
+To see how values vary spatially, open the Profile Window by clicking the Profile Button
 (![Profile Button](https://raw.githubusercontent.com/ubarsc/tuiview/refs/heads/master/resources/profileruler.png)).
 
 Left click on the raster to start the profile line, then move to where you want the line to 
@@ -105,11 +104,6 @@ Like in the query window, not updating with a new line allows you to show profil
 different areas (you can create a second profile window by selecting "New Profile/Ruler Window" from the "Tools" 
 menu or pressing Ctrl+S). One you've stopped updating the profile in one window, the
 other one will still be updated.
-
-
-turning off the plot labels (![Plot Labels](https://raw.githubusercontent.com/ubarsc/tuiview/refs/heads/master/resources/label.png)), saving the plot (![Save Plot](https://raw.githubusercontent.com/ubarsc/tuiview/refs/heads/master/resources/saveplot.png)) 
-and changing the scaling used in the plot 
-(![Plot Scaling](https://raw.githubusercontent.com/ubarsc/tuiview/refs/heads/master/resources/setplotscale.png)).
 
 # Querying Vectors
 
