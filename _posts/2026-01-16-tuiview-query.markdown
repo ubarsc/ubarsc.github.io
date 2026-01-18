@@ -9,7 +9,7 @@ categories: tutorial
 
 The basic operation of [TuiView](https://tuiview.org/) has been
 covered in a [previous post](../07/tuiview-intro.html). This post
-demostrate the querying functionality of TuiView on continuous
+demonstrates the querying functionality of TuiView on continuous
 rasters and vector files. Querying thematic rasters will be the subject 
 of a future post.
 

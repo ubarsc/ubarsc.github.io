@@ -65,9 +65,7 @@ location.
 
 # Stretching
 
-If you wish to change the stretch on an image, click the ![Stretch Button](https://raw.githubusercontent.com/ubarsc/tuiview/refs/heads/master/resources/stretch.png),
-select "Stretch" from the "Edit" menu, or press 
-Ctrl+T. This brings up the stretch window as a docked sub window as shown below:
+If you wish to change the stretch on an image, click the ![Stretch Button](https://raw.githubusercontent.com/ubarsc/tuiview/refs/heads/master/resources/stretch.png) button, or select "Stretch" from the "Edit" menu. Alternatively you can type Ctrl+T. This brings up the stretch window as a docked sub window as shown below:
 
 ![TuiView Stretch Window]({{site.url}}/images/tuiview_applystretch.png)
 
