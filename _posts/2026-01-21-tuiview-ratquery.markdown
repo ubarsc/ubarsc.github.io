@@ -44,6 +44,9 @@ note how that the color columns in the RAT have been converted to a single
 columns of the RAT are shown with their values. The rows are also numbered
 on the left and the table can be scrolled up and down.
 
+Only the currently shown part of the table is loaded into memory. This means
+that TuiView can handle enormous RATs without running out of memory.
+
 # Highlighting a row in the table and highlighting areas of the raster by selecting rows
 
 If you click on the raster with the Query Tool, the corresponding row will 
@@ -70,6 +73,21 @@ and select all rows (![Select All](https://raw.githubusercontent.com/ubarsc/tuiv
 This "Faster Forward" and "Rewind" Buttons can be used to scroll up or down to the
 next selected row(s) in the table.
 
+# Changing how the table is displayed
+
+By default, the columns appear in the order they were written to the file
+(with the exception that the colour column appears first). If you wish to change
+the order of how the column appear, right click on a column header and select
+"Move Left", Move Right", "Move Left Most" or "Move Right Most". The column
+will then move as directed. You can save the column order so TuiView uses
+this next time you open the file by selecting the Save Column Order Button
+(![Save Column Order Button](https://raw.githubusercontent.com/ubarsc/tuiview/refs/heads/master/resources/savecolumnorder.png))
+but the file must be in update mode - more detail on update mode is 
+provided below.
+If you right click on a floating point column, an option called "Set
+number of decimal places" appears. Use this to change the number of
+decimal places from the default (2).
+
 # Geographical Selection
 
 You can also select rows by selecting areas on the map. There are
@@ -92,5 +110,23 @@ be highlighted on the map and selected in the table.
 Lastly, you can select points using the Geographic Select by Point Tool
 (![Point](https://raw.githubusercontent.com/ubarsc/tuiview/refs/heads/master/resources/geographicpointselect.png)).
 Simply click a point on the map and the row for that point will be highlighted.
+
+# Select by expression
+
+There is another way of selecting rows in the RAT - with an expression.
+To select by expression, select the Select using an Expression button
+(![Select using an Expression](https://raw.githubusercontent.com/ubarsc/tuiview/refs/heads/master/resources/userexpression.png)).
+A window is opened that allows you to enter an expression (plus an imports your expression may require).
+Each column appears as a Python variable (actually a numpy array). There are some tricks about combining
+expressions and "extra" columns provided in the help text. Entering an expression and pressing "Apply"
+selects the matching rows in the table (and highlights on the map):
+
+![Select by expression]({{site.url}}/images/tuiview_expr.png)
+
+Note this window stays open until you select "Close" so you can easily modify your expression.
+
+# Saving selected rows as a .csv
+
+# Updating the RAT
 
 
