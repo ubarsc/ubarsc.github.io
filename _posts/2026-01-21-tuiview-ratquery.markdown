@@ -16,20 +16,20 @@ Outputs from [pyshepseg](https://www.pyshepseg.org/en/latest/)
 generally contain raster attribute tables. See our 
 [previous post](../../../2025/12/11/pyshepseg-intro.html) on 
 performing a segmentation and gathering statistics that are
-put into the rater attribute table.
+put into the raster attribute table.
 
 KEA and HFA are the only GDAL drivers that currently properly support
 raster attribute tables (RAT) natively. For some drivers (like GeoTiff),
 GDAL saves the RATs in a sidecar .xml file. This can be very inefficient
 and slow for large RATs so we recommend using KEA or HFA where possible.
-Some drivers (again, like GeoTiff) support a similar idea, but just for colours: 
-Colour Tables. 
+Some drivers (again, like GeoTiff) support a similar idea, but just for colors,
+called "Colour Tables". 
 
 Raster attribute tables can have colour columns. If the RAT has 
 colour tables, or there is a Colour Table present, you can ask that TuiView 
 open the file as "Color Table" and you will see the behaviour described in this 
 post. This is the default behaviour of TuiView
-but can be overriden in the the stretch dialog, or in the default stretch.
+but can be overridden in the the stretch dialog, or in the default stretch.
 
 # Querying Thematic Rasters
 
@@ -50,7 +50,7 @@ that TuiView can handle enormous RATs without running out of memory.
 # Highlighting a row in the table and highlighting areas of the raster by selecting rows
 
 If you click on the raster with the Query Tool, the corresponding row will 
-be highlighted in yellow and the table and the table will be scrolled to 
+be highlighted in yellow and the table will be scrolled to 
 show that row. 
 If you click on a row it is selected. TuiView makes a distinction between
 highlighted and selected rows. Selected rows are shown in blue in the
@@ -77,7 +77,7 @@ next selected row(s) in the table.
 
 By default, the columns appear in the order they were written to the file
 (with the exception that the colour column appears first). If you wish to change
-the order of how the column appear, right click on a column header and select
+the order in which the columns appear, right click on a column header and select
 "Move Left", Move Right", "Move Left Most" or "Move Right Most". The column
 will then move as directed. You can save the column order so TuiView uses
 this next time you open the file by selecting the Save Column Order Button
@@ -101,7 +101,7 @@ in the table:
 
 ![Geographic Select]({{site.url}}/images/tuiview_geogselect.png)
 
-You can also select rows that sit along along a line using the Geographic Select
+You can also select rows that sit along a line using the Geographic Select
 by Line Tool (![Line](https://raw.githubusercontent.com/ubarsc/tuiview/refs/heads/master/resources/geographiclineselect.png)).
 This operates similiarly to the Profile Tool. Left click on the start of the line, and
 any vertices. Right click to end the line. Rows that intersect the line will
@@ -119,7 +119,7 @@ new rows to the current selection instead of unselecting any rows first.
 There is another way of selecting rows in the RAT - with an expression.
 To select by expression, select the Select using an Expression button
 (![Select using an Expression](https://raw.githubusercontent.com/ubarsc/tuiview/refs/heads/master/resources/userexpression.png)).
-A window is opened that allows you to enter an expression (plus an imports your expression may require).
+A window is opened that allows you to enter an expression (plus any imports your expression may require).
 Each column appears as a Python variable (actually a numpy array). There are some tricks about combining
 expressions and "extra" columns provided in the help text. Entering an expression that returns a boolean
 and pressing "Apply"
@@ -141,7 +141,7 @@ This uses the shape of the `row` array to create a boolean array of the correct 
 
 # Saving selected rows as a .csv
 
-One you have selected rows, either manually, by geographic select or by expression
+Once you have selected rows, either manually, by geographic select or by expression
 (or a mix of all 3) you can save the selected rows by using the Export Selected Rows
 to CSV button on the toolbar (![Export CSV](https://raw.githubusercontent.com/ubarsc/tuiview/refs/heads/master/resources/csv.png)).
 You are prompted for the name of the file to save.
@@ -159,7 +159,7 @@ file, press this button again and the file will go back to being open in read on
 Once the file is open in update mode, the following features become available:
 1. The column order can be saved to the file (changing the column order is discussed above)
 by using the Save Column Order button (![Save Column Order](https://raw.githubusercontent.com/ubarsc/tuiview/refs/heads/master/resources/savecolumnorder.png)) on the toolbar.
-Note that the new order is only visible by GDAL and it won't change what is seen
+Note that the new order is only visible by TuiView and it won't change what is seen
 in other software.
 2. New columns can be created using the Add Column button (![Add Column](https://raw.githubusercontent.com/ubarsc/tuiview/refs/heads/master/resources/addcolumn.png)) on the toolbar.
 You will be prompted for the type and name of the column
@@ -193,7 +193,7 @@ that you select your row(s) with a geographic selection and quickly update
 these to a value that you enter with the keyboard, and then move onto 
 the next segment(s). The resulting column can be used to train a model.
 
-It is worth noting that is you can edit the colours by either updating 
+It is worth noting that you can edit the colours by either updating 
 the individual colour columns or right clicking on the "Color" column
 and selecting "Set Color of Selcted Rows". This will bring up a colour chooser
 where you can choose a colour and the colour columns will be updated.
