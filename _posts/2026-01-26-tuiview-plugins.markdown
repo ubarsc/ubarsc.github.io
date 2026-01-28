@@ -12,10 +12,10 @@ TuiView has lots of build-in functionality as [discussed](../07/tuiview-intro.ht
 there are bits of functionality we did not add to TuiView but instead made available
 as a plugin. This was either because the use was very obscure and didn't seem
 worth cluttering up TuiView's codebase, or other dependencies were required and
-it didn't make sense to have the whole TuiView package dependent upon this
+it didn't make sense to have TuiView package dependent upon this
 other package.
 
-However, plugins are a general mechanism that you can use to embed your own 
+Plugins are a general mechanism that you can use to embed your own 
 functionality on top of TuiView. This posts talks about the existing plugins in the
 [tuiview-plugins](https://github.com/ubarsc/tuiview-plugins) repository before
 briefly covering how to develop a plugin yourself.
@@ -49,12 +49,26 @@ eval `tuiviewpluginmgr -s`
 In your `~/.bashrc` (for Bash) or your `~/.tcshrc` (for tcsh). This will always set
 the `TUIVIEW_PLUGINS_PATH` for the enabled plugins when you login.
 
+Alternatively, you can copy the relevant plugin files to one of the locations
+mentioned in the [TuiView Wiki](https://github.com/ubarsc/tuiview/wiki/Plugins#installing-plugin-file).
+
 When you start TuiView with `TUIVIEW_PLUGINS_PATH` set, a message will be printed to the
 terminal that lists the plugins that have been loaded. Normally, plugins make a change
-to TuiView's user interface but this depends on how the plugin ha been written. Let's 
+to TuiView's user interface but this depends on how the plugin has been written. Let's 
 look at the various plugins that are part of the `tuiview-plugins` repository.
 
 # GPS Marker
+
+This plugin adds a "GPS" menu to the menu bar of each TuiView window. This plugin 
+assumes that [gpsd](https://gpsd.io/) has been installed on your system and has been
+started and that a suitable GPS receiver has been connected to your computer.
+The menu has 2 options: "Start Logging" and "Stop Logging". When you start logging
+the current GPS location will be plotted on all TuiView windows:
+
+![GPS]({{site.url}}/images/tuiview_gps.png)
+
+When the GPS location is updated, then the "bulleye" cursor will move to the new
+location on all windows. When you select "Stop Logging" the cursor will be hidden.
 
 # Timeseries Plot
 
@@ -70,7 +84,7 @@ gdal_edit -mo LCR_Date=20250501 image.kea
 
 If this is not set, then each image will be assumed to be one day apart, which isn't
 normally what you are after. When `LCR_Date` is set, then the number of Julian days
-between each image is displayed, which isn't normally that useful. To plot a single
+between each image is displayed. To plot a single
 point through the timeseries, select "Do a timeseries analysis on a point" from the 
 "Timeseries Plot" menu. Then click within the rasters and a timeseries plot will be shown:
 
@@ -80,6 +94,8 @@ To do a summary of polyon values through a timeseries, select "Do a timeseries a
 polygon". How the values within each polygon is summarised for the plot is controlled by the
 "Polygon Summary Method" menu option. Note that like other TuiView tools, left click to create a
 new vertex of the polygon and right click to close.
+
+Note that like the profile tool, only the displayed bands are shown.
 
 # Collect Shapefile
 
@@ -116,9 +132,9 @@ For compatibility with QGIS, the QML Reader plugin allows .qml files to be
 read and the colour information applied to a single band image via the 
 stretch window. This plugin just adds one button to the stretch window:
 
-[QML]({{site.url}}/images/tuiview_qml.png)
+![QML]({{site.url}}/images/tuiview_qml.png)
 
-Note how there in an extra button on the right hand side of the toolbar
+Note how there in an extra button (<img src="https://raw.githubusercontent.com/ubarsc/tuiview-plugins/refs/heads/master/tuiview_plugins/qml_reader/qgis_qml_icon.svg" alt="QML" width="32" height="32">) on the right hand side of the toolbar
 to allow loading of the QML file. When you press this button, you will
 be prompted for the QML file to apply. Once you have done this the .qml
 file will be applied to the the loaded image and the stretch window will
@@ -152,7 +168,7 @@ Top Layer" under the "Recode" menu. To recode values in an area, click
 for new vertex, right click closes). Then you will be presented with a table
 of recodes to be made:
 
-[Recode]({{site.url}}/images/tuiview_recode.png)
+![Recode]({{site.url}}/images/tuiview_recode.png)
 
 The left column shows the value in the image, the right column (which can be
 edited by double clcking) shows the value you wish to change it to. Many recodes
@@ -173,10 +189,86 @@ be asked whether you want to load the existing recodes and add to them, or start
 new set of recodes.
 
 To create a new raster file from the original raster file and edits stored in a `.recode` 
-file, use the `newfile_from_recode.py` script in the `tuiview-plugins` repository.
+file, use the `newfile_from_recode` entry point that was created when you
+installed `tuiview-plugins`.
 
 # Creating your own plugins
 
+It is relatively easy to create your own plugins. As described in the
+[plugin wiki page](https://github.com/ubarsc/tuiview/wiki/Plugins), you need
+to create a Python file with four functions plus an event handler if 
+your plugin needs to respond to events. Because TuiView looks at all Python
+files in the directory(s) set in `TUIVIEW_PLUGINS_PATH`, we recommend starting 
+by creating a directory with just your plugin file in it:
+
+```bash
+mkdir test
+export TUIVIEW_PLUGINS_PATH=`pwd`/test
+# edit test/plugin.py
+```
+
+Below is a very simple plugin that adds a menu to the menu bar and
+displays a message box when the user selects "My plugin Action":
+
+![Plugin Test]({{site.url}}/images/tuiview_plugintest.png)
+
+The source code is shown below:
+
+```python
+from PySide6.QtCore import QObject
+from PySide6.QtGui import QAction
+from PySide6.QtWidgets import QMessageBox
+from tuiview import pluginmanager
+
+def name():
+    return 'Test'
+
+def author():
+    return 'Sam Gillingham'
+
+def description():
+    return 'Tests that plugin works'
+    
+class MyEventHandler(QObject):
+    def __init__(self, viewer):
+        QObject.__init__(self)
+        self.viewer = viewer
+
+    # this function gets called when action triggered
+    def myEvent(self):
+        QMessageBox.information(self.viewer, "Viewer", "My Plugin")
+
+def action(actioncode, viewer):
+    # check for the code we are interested in 
+    if actioncode == pluginmanager.PLUGIN_ACTION_NEWVIEWER:
+
+        # create a handler class
+        handler = MyEventHandler(viewer)
+        # create an action class
+        myaction = QAction(viewer, triggered=handler.myEvent)
+        myaction.setText("My plugin Action")
+
+        # create a new menu and install the action
+        mymenu = viewer.menuBar().addMenu("&My Menu")
+        mymenu.addAction(myaction)
+
+        # make sure the object isn't garbage collected
+        viewer.plugins.append(handler)
+```        
+
+Obviously, some experience with Qt is required for building plugins. You also 
+need to be aware how TuiView works behind the scenes. The existing plugins are
+useful for this and there is some
+[developer documentation](https://tuiview.readthedocs.io/en/latest/) available
+but the TuiView source code is the best reference.
+
 # Conclusion
+
+The existing plugins in the [tuiview-plugins repo](https://github.com/ubarsc/tuiview-plugins)
+provide some useful extensions to TuiView functionality. There is plenty of scope
+for writing specific TuiView plugins to address specific functionality that may
+just be required for a particular workflow or company.
+
+
 
 
