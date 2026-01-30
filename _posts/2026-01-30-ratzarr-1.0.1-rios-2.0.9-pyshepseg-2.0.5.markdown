@@ -1,0 +1,92 @@
+---
+layout: post
+title:  "Announcing RatZarr, RIOS 2.0.9 and PyShepSeg 2.0.5"
+date:   2026-01-30 10:00:00 +1000
+categories: update
+---
+
+# Background
+
+Although the UBARSC projects rely heavily on the Raster
+Attribute Table (RAT) functionality within GDAL, we accept
+that for some situations this can be problematic:
+1. RATs with many columns. Eventually this becomes unwieldy.
+It would be nice if columns could be grouped in some way
+and just access what would need.
+2. Updating RATs is problematic for files on S3. They must 
+be copied locally, updated then copied back. It would be nice
+if you could just write a new column to the file on S3.
+
+We have identified the [Zarr Format](https://zarr.dev/) as 
+a useful alternative and are working to support RATs in Zarr
+files alongside RATs in normal GDAL files. Among the useful features of
+.zarr files, they can be updated on S3 directly.
+
+# What is changing?
+
+If you are currently using RATs in GDAL files (like KEA and HFA)
+and you are happy, then nothing will change. 
+
+# Introducing RatZarr
+
+[RatZarr](https://github.com/ubarsc/ratzarr) is a new UBARSC project
+that creates a RAT-like interface to a Zarr file. Note that it doesn't
+work with any .zarr file - only ones created by RatZarr iteself. Most
+users won't use this project directly - either via RIOS and/or pyshepseg.
+Not that we aren't talking about saving imagery into a .zarr file -
+just the RAT.
+
+# RIOS 2.0.9
+
+[RIOS](https://github.com/ubarsc/ratzarr) 2.0.9 has been released with
+support for .zarr files (via RatZarr, if installed) in [ratapplier](https://www.rioshome.org/en/latest/rios_ratapplier.html).
+The full list of changes can be [found here](https://www.rioshome.org/en/latest/releasenotes.html).
+An example of reading and writing data to/from a .zarr file (alongside
+a KEA file is below:
+
+```python
+from rios import ratapplier
+inRats = ratapplier.RatAssociations()
+outRats = ratapplier.RatAssociations()
+
+inRats.vegclass = ratapplier.RatHandle('vegclass.kea')
+inRats.heightclass = ratapplier.RatZarrHandle('heightclass.zarr')
+outRats.vegclass = ratapplier.RatHandle('vegclass.kea')
+outRats.heightclass = ratapplier.RatZarrHandle('heightclass.zarr')
+
+ratapplier.apply(myFunc, inRats, outRats)
+
+def myFunc(info, inputs, outputs):
+    outputs.vegclass.colSum = inputs.vegclass.col1 + inputs.vegclass.col2
+    outputs.heightclass.colSum = inputs.heightclass.col1 + inputs.heightclass.col2
+```
+
+Note that .zarr files can be accessed on S3 using the `s3://bucket/path/to/file.zarr`
+syntax.
+
+# PyShepSeg 2.0.5
+
+[PyShepSeg](https://www.pyshepseg.org) 2.0.5 has been released, also with
+support for RATs in .zarr files (via RatZarr). The full list of changes 
+can be [found here](https://www.pyshepseg.org/en/latest/ReleaseNotes.html).
+You would use this functionality if you wanted to save statistics to a .zarr
+file, like this:
+
+```python
+from pyshepseg import tiling
+segResult = tiling.calcPerSegmentStatsTiled('veginfo.kea', 1, 
+    'segment.kea', statsSelection=[('Band1_Mean', 'Mean')],
+    outFile='s3://bucket/veg.zarr', outFileIsZarr=True)
+```
+
+You then would presumeably do more processing with the data in the .zarr
+file with `rios.ratapplier` as detailed above.
+
+# Conclusion
+
+Reading and writing RAT columns to and from .zarr files is a very 
+useful feature, especially for those working in cloud compute 
+environment. New releases of RIOS and PyShepSeg allow users to save
+their data in .zarr files and any feedback is appreciated. Future
+development will include support in TuiView.
+
