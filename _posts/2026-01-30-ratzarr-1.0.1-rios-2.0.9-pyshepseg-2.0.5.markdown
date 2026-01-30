@@ -31,9 +31,9 @@ and you are happy, then nothing will change.
 
 [RatZarr](https://github.com/ubarsc/ratzarr) is a new UBARSC project
 that creates a RAT-like interface to a Zarr file. Note that it doesn't
-work with any .zarr file - only ones created by RatZarr iteself. Most
-users won't use this project directly - either via RIOS and/or pyshepseg.
-Not that we aren't talking about saving imagery into a .zarr file -
+work with any arbitrary .zarr file - only ones created by RatZarr itself. Most
+users won't use this project directly - only via RIOS and/or pyshepseg.
+Note that we aren't talking about saving imagery into a .zarr file -
 just the RAT.
 
 # RIOS 2.0.9
@@ -42,7 +42,7 @@ just the RAT.
 support for .zarr files (via RatZarr, if installed) in [ratapplier](https://www.rioshome.org/en/latest/rios_ratapplier.html).
 The full list of changes can be [found here](https://www.rioshome.org/en/latest/releasenotes.html).
 An example of reading and writing data to/from a .zarr file (alongside
-a KEA file is below:
+a KEA file) is below:
 
 ```python
 from rios import ratapplier
@@ -79,7 +79,7 @@ segResult = tiling.calcPerSegmentStatsTiled('veginfo.kea', 1,
     outFile='s3://bucket/veg.zarr', outFileIsZarr=True)
 ```
 
-You then would presumeably do more processing with the data in the .zarr
+You then would presumably do more processing with the data in the .zarr
 file with `rios.ratapplier` as detailed above.
 
 # Conclusion
