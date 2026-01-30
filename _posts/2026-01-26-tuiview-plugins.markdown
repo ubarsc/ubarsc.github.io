@@ -67,12 +67,12 @@ the current GPS location will be plotted on all TuiView windows:
 
 ![GPS]({{site.url}}/images/tuiview_gps.png)
 
-When the GPS location is updated, then the "bulleye" cursor will move to the new
+When the GPS location is updated, then the "bullseye" cursor will move to the new
 location on all windows. When you select "Stop Logging" the cursor will be hidden.
 
 # Timeseries Plot
 
-This plugin adds a "Timeseries Plot" menu to the munu bar of each TuiView window. The menu has 3 options: 
+This plugin adds a "Timeseries Plot" menu to the menu bar of each TuiView window. The menu has 3 options: 
 doing a timeseries on a point, a polygon and how to summarise points in a polygon.
 The intention is that you load a stack of images up within one viewer. Ideally, each
 file will be annotated with the `LCR_Date` metadata item which specifies the date
@@ -134,13 +134,13 @@ stretch window. This plugin just adds one button to the stretch window:
 
 ![QML]({{site.url}}/images/tuiview_qml.png)
 
-Note how there in an extra button (<img src="https://raw.githubusercontent.com/ubarsc/tuiview-plugins/refs/heads/master/tuiview_plugins/qml_reader/qgis_qml_icon.svg" alt="QML" width="32" height="32">) on the right hand side of the toolbar
+Note how there is an extra button (<img src="https://raw.githubusercontent.com/ubarsc/tuiview-plugins/refs/heads/master/tuiview_plugins/qml_reader/qgis_qml_icon.svg" alt="QML" width="32" height="32">) on the right hand side of the toolbar
 to allow loading of the QML file. When you press this button, you will
 be prompted for the QML file to apply. Once you have done this the .qml
 file will be applied to the the loaded image and the stretch window will
 be closed. Note that the image must be single band and that the Stretch 
 type will automatically be set to None before the QML is applied to match
-QGIS. Note also that altering the stretch parameters and appliying the 
+QGIS. Note also that altering the stretch parameters and applying the 
 change will lose the colouring information in the window - you have to set the
 colours via the QML button.
 
@@ -256,9 +256,11 @@ def action(actioncode, viewer):
         viewer.plugins.append(handler)
 ```        
 
-Obviously, some experience with Qt is required for building plugins. You also 
-need to be aware how TuiView works behind the scenes. The existing plugins are
-useful for this and there is some
+Obviously, some experience with Qt is required for building plugins. You need to
+create a `QObject` derived class to connect to signals and handle them. This class
+must be added to the `plugins` list of the window it belongs to so it does not
+get garbage collected by Python. You also need to be aware how TuiView works 
+behind the scenes. The existing plugins are useful for this and there is some
 [developer documentation](https://tuiview.readthedocs.io/en/latest/) available
 but the TuiView source code is the best reference.
 
