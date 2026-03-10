@@ -102,10 +102,11 @@ tuiview --savedstate ~/myproject.tuiview
 ```
 
 ```
-Note: the paths saved in .tuiview files are relative. This is so that the .tuiview
-file and image files can be moved to another location on a different machine. This
-matters when you start tuiview with --savedstate - this should be from the same
-place as when you created it.
+Note: the paths saved in .tuiview files are relative. 
+This is so that the .tuiview file and image files can
+be moved to another location on a different machine. This
+matters when you start tuiview with --savedstate 
+- this should be from the same place as when you created it.
 ```
 
 What happens if you want to get an image of what TuiView is showing for attaching to an 

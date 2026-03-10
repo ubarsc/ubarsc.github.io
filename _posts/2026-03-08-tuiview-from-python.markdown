@@ -61,10 +61,10 @@ app.exec()
 
 ```
 
-# Creating new veiwers
+# Creating new viewers
 
 If you are happy with the way the TuiView windows look, but you just want to drive
-them programmatically the recommended way to do this is to use the `GeolinkedViewers`
+them programmatically, the recommended way to do this is to use the `GeolinkedViewers`
 class:
 
 ![TuiView Geolinked Viewers]({{site.url}}/images/tuiview_geolinkpython.png)
@@ -85,9 +85,9 @@ glviewers = geolinkedviewers.GeolinkedViewers()
 viewer1 = glviewers.newViewer('a.tif')
 viewer2 = glviewers.newViewer('b.kea')
 
-# The first parameter is the 'id' of the sender, 
-# set to 0 if not sent from inside TuiView
-# The pass Easting, Northing and meters per pixel as zoom factor
+# The first parameter is the 'id' of the sender; 
+# set to 0 if not sent from inside TuiView.
+# Then pass Easting, Northing and meters per pixel as zoom factor
 obj = GeolinkInfo(0, 1976486, -3144006, 100)
 glviewers.onMove(obj)
 
@@ -97,5 +97,5 @@ app.exec()
 # Conclusion
 
 Most aspects of TuiView can be automated from a Python script. This means
-you can create your own cusom applications that re-use TuiView functionality
+you can create your own custom applications that re-use TuiView functionality
 without having to reinvent the wheel.
