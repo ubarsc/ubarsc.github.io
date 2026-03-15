@@ -27,9 +27,9 @@ they are still in use.
 [RIOS Reaper](https://github.com/gillins/rios_reaper) is a Lambda that runs once a day. 
 It is based on [AWS SAM](https://aws.amazon.com/serverless/sam/) and this needs to be installed
 first. Any machine that is connected to the internet and logged into AWS should be
-suitable for running the deployment, hoever we have only tested on Linux.
+suitable for running the deployment, however we have only tested on Linux.
 Further instructions are in the [README](https://github.com/gillins/rios_reaper/blob/main/README.md). Note 
-will need to be logged onto your AWS account with sufficient parameters to install
+will need to be logged onto your AWS account on the command line with sufficient parameters to install
 a Lambda.
 
 Since this job runs on a Lambda at a nominated time there is no extra machine to
