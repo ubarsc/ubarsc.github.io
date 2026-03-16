@@ -35,11 +35,18 @@ So, one would have to rely on something like `conda` to install GDAL itself.
 
 The GDAL bindings also require numpy. However, numpy is also fully available from PyPI. This means that, depending on what else is installed, it is possible to have a numpy from PyPI and a GDAL from conda, and they may well be compiled in ways which are incompatible at the binary level, resulting in serious conflicts at run time.
 
+Things can become even more complicated when one or more packages installed from PyPI include their own copies of binaries from other libraries. A good example of this is `rasterio`, which bundles its own copy of the GDAL binaries. These may be compiled with different options than any already installed version of GDAL, potentially causing all kinds of headaches.
+
 To avoid much of this complexity, we have concluded that it is simpler just to rely on `conda` to distribute our packages, and everything on which they depend.
 
 There is a great deal of discussion on some of these points spread all over the Internet. [This article](https://www.anaconda.com/blog/understanding-conda-and-pip) from Anaconda provides a brief overview (although slightly out of date).
 
-As discussed in that article, `conda` and `pip` can work moderately well together, and this is useful for adding in small pure Python packages which are not available in conda. However, one does need to watch for pip's tendency to try and upgrade things which conda has already installed, resulting in incompatible combinations of binaries. For this reason it is strongly recommended that any package (including dependencies) which contains compiled binary files should come from `conda-forge`, and only pure Python should be installed from PyPI. Please exercise strong caution when combining them.
+As discussed in that article, `conda` and `pip` can work moderately well together, and this is useful for adding in small pure Python packages which are not available in conda. However, one does need to watch for pip's tendency to try to install its own dependencies, and upgrade things which conda has already installed, resulting in incompatible combinations of binaries. For this reason it is strongly recommended that any package (including dependencies) which contains compiled binary files should come from `conda-forge`, and only pure Python should be installed from PyPI. Please exercise strong caution when combining them, including
+
+ 1. being aware of the dependencies of the package you are about to install
+ 2. watching the install as it runs, to see whether it tells you what else it is installing
+
+This applies even when the target package being installed is from local source rather than PyPI. The ideal output of a `pip` installation should say that it installed the package itself, but that all dependencies were already satisfied. If `pip` starts over-writing things, you will probably need to discard that conda environment and start again.
 
 # Conclusion
-In short, we recommend that you build working environments using the packages on `conda-forge`, including our own packages such as RIOS, PyShepSeg, TuiView, etc., and only use pip/PyPI to install small, pure Python packages, and only if they are not available via `conda-forge`.
+In short, we recommend that you build working environments using the packages on `conda-forge`, including our own packages such as RIOS, PyShepSeg, TuiView, etc., and only use pip/PyPI to install small, pure Python packages, and only if they are not available via `conda-forge`. Of course, more sophisticated users have other options, such as building things directly from source, but we assume that such users are sophisticated enough to know what they are doing.
