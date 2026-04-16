@@ -16,7 +16,7 @@ Each time you access memory that is not in cache (known as a cache miss),
 the CPU must go to main memory to retrieve the requested item. As
 it does this, it makes a prediction that the items immediately following
 will be the next ones requested, and loads a block of those into the
-on-chip cache  at the same time (with very little extra overhead). If the
+on-chip cache at the same time (with very little extra overhead). If the
 prediction turns out to be correct, this means that those subsequent
 requests are met from the (much faster) on-chip cache, rather than requiring
 more requests to main memory.
@@ -110,7 +110,7 @@ last axis, the second tightest loop through the second to last axis etc
 
 This is how [numpy does it internally](https://numpy.org/devdocs/reference/c-api/iterator.html).
 
-But what happens when your algorithm requires visiting the elements in 
+But what happens when your algorithm requires visiting the axes in 
 a different order? This is where `numpy.transpose` comes in. It is often 
 worthwhile transposing the order of your axes first so that they are in
 the most optimal order for your algorithm.
@@ -118,7 +118,8 @@ But won't this create extra overhead? It does, but it is not as bad as
 you might think. Firstly the input array is read by numpy in a sequential
 order. Secondly, writing back to memory appears to happen "in the background"
 so usually by the time you are reading the values they have been written 
-to memory and the CPU does not have to wait.
+to memory and the CPU does not have to wait. Often there are fewer cache misses
+in total doing this.
 Will this help your particular use case? You'd have to benchmark the transpose
 and not transposed case and see what is faster. For big arrays it usually 
 is faster.
@@ -128,7 +129,7 @@ is faster.
 Not all locations in memory take equal time to access. Because of the cache,
 most times it is the very next element from the previous one that will be fastest.
 You will need to think about this especially for multidimensional arrays.
-Note that processing using threads adds less predictability and often takes
+Note that processing using threads reduces predictability and often takes
 more CPU cycles for the same result. This is why Numba's `prange` usually does
 not give expected speedups. 
 Transposing your input array so it is in the correct order is often leads 
