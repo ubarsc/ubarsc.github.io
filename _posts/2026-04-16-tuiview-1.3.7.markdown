@@ -1,0 +1,18 @@
+---
+layout: post
+title:  "TuiView 1.3.7 released"
+date:   2026-04-16 10:00:00 +1000
+categories: update
+---
+
+[TuiView](https://tuiview.org/) 1.3.7 has been released. 
+
+This is mainly a bugfix release. There have been some fixes to 
+the way TuiView decides an image is thematic, vector labels are now
+always within their polygon, and new viewers always now show the
+current geolinked extent. There has been a fix for the `tuiview` process not 
+exiting on Wayland, however other Qt/Wayland problems remain such
+as dockable windows being unable to be moved. Until this is fixed in Qt,
+using X with TuiView is recommended under Linux.
+
+For more information see the [list of changes](https://github.com/ubarsc/tuiview/blob/master/CHANGES.txt).
