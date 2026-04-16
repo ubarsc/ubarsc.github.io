@@ -12,13 +12,23 @@ of memory chunks most recently used and can be [up to 100 times](https://www.hp.
 faster than normal memory. There are in fact often multiple levels of cache
 but in this discussion we just assume there is just one.
 
-Each time you access memory that is not in the cache (a cache miss)
-then your computer must access the slower main memory while the 
-cache is reloaded. Minimising the number of times this happens
-can be critical for performance sensitive code.
+Each time you access memory that is not in cache (known as a cache miss),
+the CPU must go to main memory to retrieve the requested item. As
+it does this, it makes a prediction that the items immediately following
+will be the next ones requested, and loads a block of those into the
+on-chip cache  at the same time (with very little extra overhead). If the
+prediction turns out to be correct, this means that those subsequent
+requests are met from the (much faster) on-chip cache, rather than requiring
+more requests to main memory.
 
-Confounding analysis of performance is the fact that operating
-systems tend to show that the CPU is 'busy' while waiting for
+In order to gain the most benefit from this, we should generally try to ensure
+that our processing matches the predictions the cache system is making,
+and so we should try to process in the order in which data is being held in
+main memory.
+
+Directly monitoring this aspect of performance tends to be quite difficult.
+Confounding the analysis is the fact that operating systems 
+tend to show that the CPU is 'busy' while waiting for
 data to come from main memory. The only way to determine whether
 a particular implementation is fast or not is to run it and
 time how long it takes. Using how 'busy' the CPU is might not
