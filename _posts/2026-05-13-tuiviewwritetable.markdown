@@ -78,26 +78,26 @@ $ tuiviewwritetable --remove myimage.kea --name biomass2
 
 # Accessing surrogate colour tables within TuiView
 
-If you load an thematic image with TuiView, it will default to using the colour
+If you load a thematic image with TuiView, it will default to using the colour
 table within the Raster Attribute Table. However, if you open the Query Window
 and right click on a float or integer column you will see there is an option to
-"Set coloumn as Colour Table Lookup":
+"Set column as Colour Table Lookup":
 
 ![Query Window]({{site.url}}/images/tuiview_surrogate.png)
 
 If you select this option, the behaviour will be either:
 1. If you have only one surrogate colour table in the current image this column
 will be directly used as a lookup into the surrogate colour table.
-2. If you have more than one surrogate colour table you will be precented
+2. If you have more than one surrogate colour table you will be presented
 with a dialog allowing you to choose which surrogate colour table to use. This
-coloumn will then be used as a lookup into the chosen surrogate colour table.
+column will then be used as a lookup into the chosen surrogate colour table.
 
 The image will now be displayed using the column as lookup into the surrogate colour
 table:
 
 ![Query Window Applied]({{site.url}}/images/tuiview_surrogateapply.png)
 
-Note than a small icon (![Lookup](https://raw.githubusercontent.com/ubarsc/tuiview/refs/heads/master/resources/arrowup.png)) is now drawn against next to the column header that is being used as a lookup. 
+Note that a small icon (![Lookup](https://raw.githubusercontent.com/ubarsc/tuiview/refs/heads/master/resources/arrowup.png)) is now drawn against next to the column header that is being used as a lookup. 
 
 To remove the colour table lookup, select the same menu option again and it will
 be removed and the original colour table shown.
@@ -106,4 +106,4 @@ be removed and the original colour table shown.
 
 TuiView surrogate colour tables allow you to view your imagery using multiple colour
 tables for different classifications. This can be a handy feature in situations
-where you have many different classifications stored in your Raster Attrinute Table.
+where you have many different classifications stored in your Raster Attribute Table.
