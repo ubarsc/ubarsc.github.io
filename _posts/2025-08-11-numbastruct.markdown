@@ -135,6 +135,33 @@ rather than the whole thing:
 dict_of_scalar = Dict.empty(key_type=types.uint32, value_type=typeof(myarray[0]))
 ```
 
+## Tuples
+
+If you need to have the key of a dictionary contain more than one value (rows and columns for example), 
+you need to use a Numba tuple. There are 2 flavours. the first is `UniTuple` which is limited to 2 elements
+and must be both of the same type:
+
+```python
+from numba.typed import UniTuple, Dict, List
+
+# a 2 element tuple of type uint32
+tupletype = types.UniTuple(types.uint32, 2)
+dict_key_tuple = Dict.empty(key_type=tupletype, value_type=types.ListType(types.float64)
+dict_key_tuple[(1, 7])] = List.empty_list(types.float64)
+```
+
+Alternatively, there is a `Tuple` type which can have any number of elements and (Numba supported) types:
+
+```python
+from numba.typed import Tuple, Dict, List
+
+# 3 element tuple of different types
+tupletype = Tuple([types.uint8, types.float32, uint32])
+dict_key_tuple = Dict.empty(key_type=tupletype, value_type=types.ListType(types.float64)
+dict_key_tuple[(1, 7.9, 3656])] = List.empty_list(types.float64)
+```
+
+
 # @jitclass
 
 The above containers are very handy, but what if you need to create more complex data structures?
