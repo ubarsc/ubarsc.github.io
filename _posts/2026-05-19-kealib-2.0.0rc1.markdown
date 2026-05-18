@@ -1,0 +1,17 @@
+---
+layout: post
+title:  "kealib 2.0.0 Release Candidate 1 available"
+date:   2026-05-19 07:00:00 +1000
+categories: update
+---
+
+[kealib](https://kealib.org/) 2.0.0 Release Candidate 1 is now available from 
+[kealib downloads](https://github.com/ubarsc/kealib/releases/tag/kealib-2.0.0rc1).
+
+This is a complete re-write using [HighFive](https://github.com/highfive-devs/highfive)
+C++ bindings for HDF5. Issues on OSX are hopefully now resolved. 
+
+For more information see the [list of changes](https://github.com/ubarsc/kealib/blob/master/Changes.txt).
+
+For those building the in-tree GDAL driver, you will need the changes in [GDAL PR 14596](https://github.com/OSGeo/gdal/pull/14596). Please open an issue for any problems
+that are found.
