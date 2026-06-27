@@ -15,7 +15,8 @@ to store them as separate columns, and rely on the column names to indicate
 that they are closely related columns. With this new feature, they are stored
 as a single RAT column, and read in as a single 2-d array
 
-Suggested use cases include:
+It is expected that most columns will remain 1-d. However, some suggested use
+cases for 2-d columns include:
 
   * Lidar waveform data for each image segment
   * Multi-year FPC (Foliage Projective Cover) values per-segment
