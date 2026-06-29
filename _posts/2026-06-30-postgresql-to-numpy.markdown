@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Reading results from PostGreSQL directly into numpy arrays"
-date:   2026-06-29 10:00:00 +1000
+date:   2026-06-30 08:00:00 +1000
 categories: tutorial
 ---
 
@@ -104,7 +104,7 @@ data = numpy.frombuffer(notrailer,
 ```
 
 The `sizex` and `sizey` fields can be safely ignored (assuming you are actually
-readying in 2 floats!).
+reading in 2 floats!).
 
 To process a result that has one float (radius) and one int (count) for each row:
 
