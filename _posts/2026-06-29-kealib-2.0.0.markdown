@@ -1,0 +1,21 @@
+---
+layout: post
+title:  "kealib 2.0.0 (final) Released"
+date:   2026-06-29 10:00:00 +1000
+categories: update
+---
+
+[kealib](https://kealib.org/) 2.0.0 (final) is now available from 
+[kealib downloads](https://github.com/ubarsc/kealib/releases/tag/kealib-2.0.0).
+
+For those building from source: note that [HighFive](https://github.com/highfive-devs/highfive) 
+is now needed to build `kealib`.
+
+For those building the in-tree GDAL driver: you will need the changes in [GDAL PR 14596](https://github.com/OSGeo/gdal/pull/14596) to build against kealib 2.0. 
+These changes will appear in GDAL 3.14. 
+
+For more information see the [list of changes](https://github.com/ubarsc/kealib/blob/master/Changes.txt).
+
+This will soon become the default version on conda forge.
+
+
