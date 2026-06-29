@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Reading results from PostGreSQL directly into numpy arrays"
-date:   2026-06-24 10:00:00 +1000
+date:   2026-06-29 10:00:00 +1000
 categories: tutorial
 ---
 
@@ -46,7 +46,7 @@ at the end of the data. numpy allows us to specify the size of any header, but n
 of the trailer. To remove the trailer before further processing, run:
 
 ```python
-notrailer = notrailer.getvalue()[:-2]  # unread the trailer
+notrailer = result.getvalue()[:-2]  # unread the trailer
 ```
 
 Next, the data can be read into a numpy array using the `numpy.frombuffer` function
@@ -77,6 +77,10 @@ commonly used types and how to interpret them with numpy:
 |                 |   >u4 size of value |
 |                 |   Then value itself |
 
+Unfortunately, variable length string data cannot be interpreted by
+`numpy.frombuffer`. If all your strings are of fixed length you may 
+be able to use the `S` format specifier along with the length.
+
 ```
 Note: the > character before the type tells numpy the data is in big
 endian format. PostGreSQL transmits data as big endian.
@@ -84,8 +88,71 @@ We will cover converting back to little endian later, but
 just be sure to specify this character otherwise you may not
 be able to understand the result...
 ```
-Currently the file header is 19 bytes.
 
+Currently the file header is 19 bytes (as documented in the PostGreSQL documentation). 
+This means that the `offset` parameter to `numpy.frombuffer` must be set to 19.
 
+Also, each row starts with a 16 bit integer (type `>u2`) with a count of the
+results for that row. Since we provided the query we should be able to ignore this.
+
+To process a result that has 2 floats for each row ('x' and 'y'):
+
+```python
+data = numpy.frombuffer(notrailer, 
+    dtype=[('fields', '>u2'), ('sizex', '>u4'), ('x', '>f8'), ('sizey', '>u4'), ('y', '>f8')],
+    offset=19)
+```
+
+The `sizex` and `sizey` fields can be safely ignored (assuming you are actually
+readying in 2 floats!).
+
+To process a result that has one float (radius) and one int (count) for each row:
+
+```python
+data = numpy.frombuffer(notrailer, 
+    dtype=[('fields', '>u2'), ('sizeradius', '>u4'), ('radius', '>f8'), ('sizecount', '>u4'), ('count', '>u4')],
+    offset=19)
+```
+
+Again, `sizeradius` and `sizecount` can be safely ignored if you know the types.
+
+To read an array of a known size (4 elements in this example):
+
+```python
+data = numpy.frombuffer(notrailer, 
+    dtype=[('fields', '>u2'), ('info_about_array', '>u4', (5,)), 
+        ('array', [('offset', '>u4'), ('value', '>f8')], 4)],
+    offset=19)
+```
+
+In this case we can ignore the `ndims` etc for the array (see table above,
+this is stored in the `info_about_array` field. The data for the array
+will be stored in the `array` field.
+
+# Converting to the correct endian
+
+As discussed above, PostGreSQL transmits all data as big endian. Most machines
+now are little endian. So the data contained in these structured arrays are
+likely to wrong for your CPU. You can find which byte order your machine is using
+by printing the value of `sys.byteorder`:
+
+```python
+import sys
+print(sys.byteorder)
+```
+
+If this is `little` you will need to convert the arrays to little endian with 
+code like this:
+
+```python
+data_native = data.byteswap()  # swap the data
+data_native = data_native.view(data_native.dtype.newbyteorder())  # set the little endian data types
+```
 
 # Conclusion
+
+Reading data into a numpy array from a PostGreSQL binary cursor is possible if
+you need to get the data directly into numpy as quickly as possible. It is not
+without its downsides, but if you are getting back large arrays and numpy is
+the only way they can be processed then the method described above is feasible.
+
