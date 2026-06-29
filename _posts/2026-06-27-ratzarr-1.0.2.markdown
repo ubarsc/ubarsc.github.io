@@ -1,0 +1,34 @@
+---
+layout: post
+title:  "RatZarr 1.0.2 released"
+date:   2026-06-27 11:00:00 +1000
+categories: update
+---
+
+[RatZarr](https://github.com/ubarsc/ratzarr) 1.0.2 has been released
+
+This release supports the use of multi-valued columns. In effect, this allows
+for a single column to be a two dimensional array instead of the usual
+one dimension. The second dimension allows for multiple values to be
+stored for each row of the RAT. Previously, the only way to do this was
+to store them as separate columns, and rely on the column names to indicate
+that they are closely related columns. With this new feature, they are stored
+as a single RAT column, and read in as a single 2-d array
+
+It is expected that most columns will remain 1-d. However, some suggested use
+cases for 2-d columns include:
+
+  * Lidar waveform data for each image segment
+  * Multi-year FPC (Foliage Projective Cover) values per-segment
+
+It is strongly recommended that when using this multi-valued column feature,
+a column attribute also be stored (see 
+[getColumnAttributeMapping](https://htmlpreview.github.io/?https://github.com/ubarsc/ratzarr/blob/main/docs/ratzarr.html#RatZarr.getColumnAttributeMapping))
+to document the meaning of the sub-columns. For example, if storing FPC
+values for multiple years as a single column named FPC, one might also store
+a column attribute with the list of years, e.g.
+
+```python
+attrs = rz.getColumnAttributeMapping('FPC')
+attrs['years'] = [1985, 1990, 1995, 2000, 2005]
+```
