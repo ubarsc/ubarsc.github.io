@@ -1,0 +1,63 @@
+---
+layout: default
+---
+
+<div class="home">
+  {%- if page.title -%}
+    <h1 class="page-heading">{{ page.title }}</h1>
+  {%- endif -%}
+
+  {{ content }}
+
+  {%- if site.posts.size > 0 -%}
+    <script>
+    function filtercategory()
+    {
+        const category = document.getElementById('filter-category').value;
+        const posts = document.querySelectorAll('.post-item');
+        posts.forEach(post => {
+            // Get the categories stored in the data attribute
+            const postCategories = post.getAttribute('data-categories').split(',');
+        
+            if (category === 'All') {
+              post.style.display = 'block';
+            } else if (postCategories.includes(category)) {
+              post.style.display = 'block';
+            } else {
+              post.style.display = 'none';
+            }
+          });
+    }
+    </script>
+    <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2>
+    <label for="filter-category">Choose a Category:</label>
+    <select id="filter-category">
+      <option value="All">All</option>
+      {% assign unique_cats = site.categories | unique %}
+      {% for cat in unique_cats %}
+          {% assign cat_name = cat | first %}
+          <option value="{{ cat_name }}">{{ cat_name }}</option>
+      {% endfor %}
+    </select>
+    <button onclick="filtercategory();">Filter</button>
+    <ul class="post-list">
+      {%- for post in site.posts -%}
+      <li class="post-item" data-categories="{{ post.categories | join: "," }}">
+        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+        <span class="post-meta">{{ post.date | date: date_format }}</span>
+        <h3>
+          <a class="post-link" href="{{ post.url | relative_url }}">
+            {{ post.title | escape }}
+          </a>
+        </h3>
+        {%- if site.show_excerpts -%}
+          {{ post.excerpt }}
+        {%- endif -%}
+      </li>
+      {%- endfor -%}
+    </ul>
+
+    <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
+  {%- endif -%}
+
+</div>
