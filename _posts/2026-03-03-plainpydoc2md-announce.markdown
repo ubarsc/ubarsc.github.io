@@ -2,7 +2,7 @@
 layout: post
 title: "New Python script to convert Python docstrings to Markdown files"
 date: 2026-03-03 11:55:00 +1000
-categories: new
+categories: plainpydoc2md update
 ---
 
 A new Python script [plainpydoc2md](https://github.com/ubarsc/plainpydoc2md)

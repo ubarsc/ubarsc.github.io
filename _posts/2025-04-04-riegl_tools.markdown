@@ -2,7 +2,7 @@
 layout: post
 title:  "Riegl Tools updated for numpy 2.0"
 date:   2025-04-04 08:00:00 +1000
-categories: update
+categories: ReiglTools update
 ---
 
 [Riegl Tools](https://gitlab.com/jrsrp/sys/lidar/riegl_tools) has been updated to 

@@ -2,7 +2,7 @@
 layout: post
 title:  "Rebuilding Debian/Ubuntu's GDAL package"
 date:   2025-08-07 10:00:00 +1000
-categories: tutorial
+categories: Debian tutorial
 ---
 
 # Introduction

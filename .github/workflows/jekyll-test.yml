@@ -1,0 +1,25 @@
+name: Check Jekyll Build
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  test-build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout source code
+      uses: actions/checkout@v4
+
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.3' # Matches your local development Ruby version
+        bundler-cache: true # Automatically runs 'bundle install' and caches gems
+
+    - name: Test Jekyll Build
+      run: bundle exec jekyll build --strict
+      

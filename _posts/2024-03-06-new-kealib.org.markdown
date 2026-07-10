@@ -2,7 +2,7 @@
 layout: post
 title:  "New kealib.org website with improved documentation"
 date:   2024-03-06 11:00:00 +1000
-categories: update
+categories: KeaLib update
 ---
 
 New [kealib.org](https://kealib.org) website launched. This now includes

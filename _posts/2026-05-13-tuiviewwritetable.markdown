@@ -2,7 +2,7 @@
 layout: post
 title:  "Using Surrogate Colour Tables in TuiView"
 date:   2026-05-13 10:00:00 +1000
-categories: tutorial
+categories: TuiView tutorial
 ---
 
 # Introduction

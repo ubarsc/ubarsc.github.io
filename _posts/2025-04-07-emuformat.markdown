@@ -2,7 +2,7 @@
 layout: post
 title:  "EMU Format ready for testing"
 date:   2025-04-07 08:00:00 +1000
-categories: update
+categories: EMU update
 ---
 
 Announcing that [EMU format](https://github.com/ubarsc/emuformat) is

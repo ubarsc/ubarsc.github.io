@@ -2,7 +2,7 @@
 layout: post
 title:  "Using Pyshepseg with AWS Fargate and threading"
 date:   2025-12-03 10:00:00 +1000
-categories: tutorial
+categories: PyShepSeg tutorial
 ---
 
 # Introduction

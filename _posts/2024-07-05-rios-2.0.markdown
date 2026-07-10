@@ -2,7 +2,7 @@
 layout: post
 title:  "RIOS 2.0 Released"
 date:   2024-07-05 15:35:00 +1000
-categories: update
+categories: RIOS update
 ---
 
 A major update of RIOS has been released. Version 2.0 incorporates

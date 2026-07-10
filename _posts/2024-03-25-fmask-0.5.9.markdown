@@ -2,7 +2,7 @@
 layout: post
 title:  "python-fmask 0.5.9 Released"
 date:   2024-03-25 9:00:00 +1000
-categories: update
+categories: fmask update
 ---
 
 python-fmask 0.5.9 has been released. This fixes a problem with RIOS 1.4.17

@@ -2,7 +2,7 @@
 layout: post
 title:  "kealib 1.6.1 bug fix release"
 date:   2025-01-14 08:00:00 +1000
-categories: update
+categories: KeaLib update
 ---
 
 [kealib](https://kealib.org/) 1.6.1 has been released. This is mainly a bug fix release.

@@ -2,7 +2,7 @@
 layout: post
 title:  "RIOS 1.4.17 Released"
 date:   2024-03-04 15:10:00 +1000
-categories: update
+categories: RIOS update
 ---
 
 RIOS 1.4.17 has been released. This is mainly a bugfix release. See 
