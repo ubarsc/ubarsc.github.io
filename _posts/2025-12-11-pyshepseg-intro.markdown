@@ -2,7 +2,7 @@
 layout: post
 title:  "An introduction to using Pyshepseg"
 date:   2025-12-11 10:00:00 +1000
-categories: tutorial
+categories: PyShepSeg tutorial
 ---
 
 # Introduction

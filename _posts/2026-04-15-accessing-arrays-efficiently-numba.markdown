@@ -2,7 +2,7 @@
 layout: post
 title:  "Accessing Arrays efficiently in Numba"
 date:   2026-04-15 10:00:00 +1000
-categories: tutorial
+categories: Numba tutorial
 ---
 
 # Introduction

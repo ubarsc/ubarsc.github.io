@@ -2,7 +2,7 @@
 layout: post
 title:  "Profiling script with cProfile, SnakeVis and profila"
 date:   2025-10-02 8:00:00 +1000
-categories: tutorial
+categories: Python tutorial
 ---
 
 # Introduction

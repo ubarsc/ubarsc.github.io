@@ -2,7 +2,7 @@
 layout: post
 title:  "processinghistory 1.0.4"
 date:   2025-08-29 11:50:00 +1000
-categories: update
+categories: ProcessingHistory update
 ---
 
 The latest release of processinghistory (1.0.4) includes explicit support for

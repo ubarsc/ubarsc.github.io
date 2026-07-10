@@ -2,7 +2,7 @@
 layout: post
 title:  "Querying Continuous Raster Layers and Vectors with TuiView"
 date:   2026-01-16 10:00:00 +1000
-categories: tutorial
+categories: TuiView tutorial
 ---
 
 # Introduction

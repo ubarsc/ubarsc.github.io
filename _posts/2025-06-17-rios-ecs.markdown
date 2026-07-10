@@ -2,7 +2,7 @@
 layout: post
 title:  "Using RIOS with ECS Clusters on AWS"
 date:   2025-06-17 10:30:00 +1000
-categories: tutorial
+categories: RIOS tutorial
 ---
 
 # Introduction

@@ -2,7 +2,7 @@
 layout: post
 title:  "RIOS 2.0.5, with single-pass stats & pyramids"
 date:   2024-11-30 10:00:00 +1000
-categories: update
+categories: RIOS update
 ---
 
 The latest RIOS release (2.0.5) includes single-pass calculation

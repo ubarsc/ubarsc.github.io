@@ -2,7 +2,7 @@
 layout: post
 title:  "Announcing RatZarr, RIOS 2.0.9 and PyShepSeg 2.0.5"
 date:   2026-01-30 10:00:00 +1000
-categories: update
+categories: RatZarr RIOS PyShepSeg update
 ---
 
 # Background

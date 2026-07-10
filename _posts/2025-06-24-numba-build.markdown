@@ -2,7 +2,7 @@
 layout: post
 title:  "Building Numba from source on Ubuntu"
 date:   2025-06-20 08:00:00 +1000
-categories: recipe
+categories: Numba recipe
 ---
 
 [Numba](https://numba.pydata.org/) is an essential part of the scientific software toolkit

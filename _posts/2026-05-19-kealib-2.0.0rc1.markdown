@@ -2,7 +2,7 @@
 layout: post
 title:  "kealib 2.0.0 Release Candidate 1 available"
 date:   2026-05-19 07:00:00 +1000
-categories: update
+categories: KeaLib update
 ---
 
 [kealib](https://kealib.org/) 2.0.0 Release Candidate 1 is now available from 

@@ -2,7 +2,7 @@
 layout: post
 title:  "TuiView 1.3.6 released"
 date:   2026-01-06 10:00:00 +1000
-categories: update
+categories: TuiView update
 ---
 
 [TuiView](https://tuiview.org/) 1.3.6 has been released. This release overhauls

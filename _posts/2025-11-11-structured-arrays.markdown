@@ -2,7 +2,7 @@
 layout: post
 title:  "Numpy Structured Arrays"
 date:   2025-11-11 10:00:00 +1000
-categories: tutorial
+categories: numpy tutorial
 ---
 
 # Introduction

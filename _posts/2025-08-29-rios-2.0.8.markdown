@@ -2,7 +2,7 @@
 layout: post
 title:  "RIOS 2.0.8"
 date:   2025-08-29 11:40:00 +1000
-categories: update
+categories: RIOS update
 ---
 
 The latest RIOS release (2.0.8) includes improved error handling for

@@ -2,7 +2,7 @@
 layout: post
 title:  "TuiView 1.2.14 Released"
 date:   2024-05-28 8:00:00 +1000
-categories: update
+categories: TuiView update
 ---
 
 TuiView 1.2.14 has been released. The main feature of this release

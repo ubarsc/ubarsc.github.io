@@ -2,7 +2,7 @@
 layout: post
 title:  "Driving TuiView from Python"
 date:   2026-03-08 10:00:00 +1000
-categories: tutorial
+categories: TuiView tutorial
 ---
 
 # Introduction

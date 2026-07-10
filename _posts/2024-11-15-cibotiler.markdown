@@ -2,7 +2,7 @@
 layout: post
 title:  "Cibo Tiler Released"
 date:   2024-11-15 10:00:00 +1000
-categories: new
+categories: cibotiler update
 ---
 
 A new open source project that serves raster files as web tiles has been

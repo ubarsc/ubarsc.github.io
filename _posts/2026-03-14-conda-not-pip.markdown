@@ -2,7 +2,7 @@
 layout: post
 title:  "Distributing our software - conda-forge, not pip/PyPI"
 date:   2026-03-14 10:00:00 +1000
-categories: tutorial
+categories: Conda tutorial
 ---
 
 # Introduction

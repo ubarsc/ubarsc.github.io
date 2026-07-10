@@ -2,7 +2,7 @@
 layout: post
 title:  "New Python package to store processing history on GDAL raster files"
 date:   2025-04-14 14:15:00 +1000
-categories: new
+categories: ProcessingHistory update
 ---
 
 A new Python package, [processinghistory](https://github.com/ubarsc/processinghistory),

@@ -2,7 +2,7 @@
 layout: post
 title:  "pyshepseg 2.0.3 released with numpy 2.0 support"
 date:   2024-12-06 10:00:00 +1000
-categories: update
+categories: pyshepseg update
 ---
 
 pyshepseg 2.0.3 has been released. This release fully supports numpy 2.0.

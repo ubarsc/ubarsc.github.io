@@ -2,7 +2,7 @@
 layout: post
 title:  "Using numpy masked arrays"
 date:   2026-04-01 10:00:00 +1000
-categories: tutorial
+categories: numpy tutorial
 ---
 
 # Introduction

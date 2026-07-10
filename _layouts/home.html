@@ -14,32 +14,72 @@ layout: default
     function filtercategory()
     {
         const category = document.getElementById('filter-category').value;
+        const software = document.getElementById('filter-software').value;
         const posts = document.querySelectorAll('.post-item');
         posts.forEach(post => {
             // Get the categories stored in the data attribute
             const postCategories = post.getAttribute('data-categories').split(',');
-        
-            if (category === 'All') {
-              post.style.display = 'block';
-            } else if (postCategories.includes(category)) {
-              post.style.display = 'block';
-            } else {
-              post.style.display = 'none';
+            
+            let display = 'block';
+            if( software !== 'All') {
+                if(!postCategories.slice(0, -1).includes(software)) {
+                    display = 'none';
+                }
             }
+        
+            if (category !== 'All') {
+                if(category != postCategories[postCategories.length - 1]) {
+                    display = 'none';
+                }
+            }
+            post.style.display = display;
           });
     }
     </script>
     <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2>
-    <label for="filter-category">Choose a Category:</label>
-    <select id="filter-category">
-      <option value="All">All</option>
-      {% assign unique_cats = site.categories | unique %}
-      {% for cat in unique_cats %}
-          {% assign cat_name = cat | first %}
-          <option value="{{ cat_name }}">{{ cat_name }}</option>
-      {% endfor %}
-    </select>
-    <button onclick="filtercategory();">Filter</button>
+    <div>
+        {% assign unique_soft = "" | split: "," %}
+        {% assign unique_cat = "" | split: "," %}
+        {% for post in site.posts %}
+            {% comment %}
+            Each post contains one or more software names and
+            the last category is the actual 'category'
+            {% endcomment %}
+            {% if post.categories.size >= 2 %}
+                {% assign limit_size = post.categories.size | minus: 1 %}
+                {% for post_soft in post.categories limit: limit_size %}
+                    {% unless unique_soft contains post_soft %}
+                        {% assign post_soft_l = post_soft | split: "," %}
+                        {% assign unique_soft = unique_soft | concat: post_soft_l %}
+                    {% endunless %}
+                {% endfor %}
+                
+                {% assign post_cat = post.categories | last %}
+                {% unless unique_cat contains post_cat %}
+                    {% assign post_cat_l = post_cat | split: "," %}
+                    {% assign unique_cat = unique_cat | concat: post_cat_l %}
+                {% endunless %}
+            {% else %}
+                {{ "Should be at least 2 categories for post " | append: post.title | raise_error }}
+            {% endif %}
+        {% endfor %}
+        <label for="filter-software">Choose Software:</label>
+        <select id="filter-software">
+            <option value="All">All</option>
+            {% for soft_name in unique_soft %}
+                <option value="{{ soft_name }}">{{ soft_name }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="filter-category">Choose a Category:</label>
+        <select id="filter-category">
+            <option value="All">All</option>
+            {% for cat_name in unique_cat %}
+                <option value="{{ cat_name }}">{{ cat_name }}</option>
+            {% endfor %}
+        </select>
+        <button onclick="filtercategory();">Filter</button>
+    </div>
     <ul class="post-list">
       {%- for post in site.posts -%}
       <li class="post-item" data-categories="{{ post.categories | join: "," }}">

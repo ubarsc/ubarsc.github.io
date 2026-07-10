@@ -2,7 +2,7 @@
 layout: post
 title:  "Querying Raster Layers with Raster Attribute Tables"
 date:   2026-01-21 10:00:00 +1000
-categories: tutorial
+categories: TuiView tutorial
 ---
 
 # Introduction

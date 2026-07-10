@@ -2,7 +2,7 @@
 layout: post
 title:  "Exploring TuiView plugins and developing your own"
 date:   2026-01-26 10:00:00 +1000
-categories: tutorial
+categories: TuiView tutorial
 ---
 
 # Introduction

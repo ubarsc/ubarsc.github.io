@@ -2,7 +2,7 @@
 layout: post
 title:  "Calling C from inside Numba"
 date:   2025-08-27 8:00:00 +1000
-categories: tutorial
+categories: Numba tutorial
 ---
 
 # Introduction
