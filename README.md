@@ -1,6 +1,7 @@
 
 # To install all the packages locally:
 
+- sudo apt install ruby-rubygems
 - bundle install
 
 # To serve locally:
@@ -9,7 +10,6 @@
 
 # To create again with new versions of the packages
 
-- sudo apt install ruby-rubygems
 - sudo gem install jekyll bundler minima
 
 On Mac, see: https://jekyllrb.com/docs/installation/macos/
