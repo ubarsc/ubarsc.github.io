@@ -2,7 +2,7 @@
 layout: post
 title:  "Complex data structures with Numba"
 date:   2025-08-07 10:00:00 +1000
-categories: Numba tutorial
+categories: ubarsc tutorial Numba
 ---
 
 # Introduction

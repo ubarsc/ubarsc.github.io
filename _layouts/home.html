@@ -18,17 +18,26 @@ layout: default
         const posts = document.querySelectorAll('.post-item');
         posts.forEach(post => {
             // Get the categories stored in the data attribute
+            // see code below that does this for each post
+            // format of the categories tag is:
+            // categories: ubarsc <type> <software1> ... <softwareX>
+            // 'ubarsc' is just to make the path unique (github does funny things if the first category 
+            // matches an existing project).
+            // <type> should be tutorial, update etc
+            // and <software> is the names(s) of the software this relates to
             const postCategories = post.getAttribute('data-categories').split(',');
             
             let display = 'block';
             if( software !== 'All') {
-                if(!postCategories.slice(0, -1).includes(software)) {
+                // software tag is element 2 until the end of the list
+                if(!postCategories.slice(2).includes(software)) {
                     display = 'none';
                 }
             }
         
             if (category !== 'All') {
-                if(category != postCategories[postCategories.length - 1]) {
+                // category is element 1
+                if(category != postCategories[1]) {
                     display = 'none';
                 }
             }
@@ -42,25 +51,24 @@ layout: default
         {% assign unique_cat = "" | split: "," %}
         {% for post in site.posts %}
             {% comment %}
-            Each post contains one or more software names and
-            the last category is the actual 'category'
+            Each post contains 'ubarsc' (ignored)
+            the actual 'category' then one or more software names
             {% endcomment %}
-            {% if post.categories.size >= 2 %}
-                {% assign limit_size = post.categories.size | minus: 1 %}
-                {% for post_soft in post.categories limit: limit_size %}
+            {% if post.categories.size >= 3 %}
+                {% for post_soft in post.categories offset: 2 %}
                     {% unless unique_soft contains post_soft %}
                         {% assign post_soft_l = post_soft | split: "," %}
                         {% assign unique_soft = unique_soft | concat: post_soft_l %}
                     {% endunless %}
                 {% endfor %}
                 
-                {% assign post_cat = post.categories | last %}
+                {% assign post_cat = post.categories[1] %}
                 {% unless unique_cat contains post_cat %}
                     {% assign post_cat_l = post_cat | split: "," %}
                     {% assign unique_cat = unique_cat | concat: post_cat_l %}
                 {% endunless %}
             {% else %}
-                {{ "Should be at least 2 categories for post " | append: post.title | raise_error }}
+                {{ "Should be at least 3 categories for post " | append: post.title | raise_error }}
             {% endif %}
         {% endfor %}
         <label for="filter-software">Choose Software:</label>

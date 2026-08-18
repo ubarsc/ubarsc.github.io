@@ -2,16 +2,16 @@
 layout: post
 title:  "Using Pyshepseg with AWS Fargate and threading"
 date:   2025-12-03 10:00:00 +1000
-categories: PyShepSeg tutorial
+categories: ubarsc tutorial PyShepSeg
 ---
 
 # Introduction
 
-As discussed in [a previous post](../../06/17/rios-ecs.html), RIOS has the ability to
+As discussed in [a previous post](../../../../rios/2025/06/17/rios-ecs.html), RIOS has the ability to
 spread processing across multiple VMS with AWS ECS. RIOS has the ability to use
 ECS in either the Fargate or Private Cluster mode.
 [pyshepseg](www.pyshepseg.org/en/latest/) also gained the ability to use AWS ECS in 
-Fargate mode to spread the segmentation workload over multiple VMs in [version 2.0.4](../../../../update/2025/10/17/pyshepseg-2.0.4.html). 
+Fargate mode to spread the segmentation workload over multiple VMs in [version 2.0.4](../../../../../update/pyshepseg/2025/10/17/pyshepseg-2.0.4.html). 
 
 Fargate is now the recommended approach to parallelising segmentation on AWS. The old AWS Batch
 support is now being removed. When running on a single multi-core machine, the preferred approach is to use
@@ -22,7 +22,7 @@ that it should be very efficient, but see "A note about performance" below.
 
 # Pyshepseg with Fargate
 
-Using `pyshepseg` with AWS Fargate is very similar to [RIOS](../../06/17/rios-ecs.html),
+Using `pyshepseg` with AWS Fargate is very similar to [RIOS](../../../../rios/2025/06/17/rios-ecs.html),
 you will need a `taskRoleArn`, `executionRoleArn`, security group and subnet information
 similar to that needed by RIOS.
 

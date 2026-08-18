@@ -2,7 +2,7 @@
 layout: post
 title:  "Profiling script with cProfile, SnakeVis and profila"
 date:   2025-10-02 8:00:00 +1000
-categories: Python tutorial
+categories: ubarsc tutorial Python
 ---
 
 # Introduction
@@ -17,7 +17,7 @@ It is much more sensible to identify the parts of your script that are
 really slow and spend effort optimising them.
 
 This article discusses ways to temporarily gather profile information during
-development. Refer to [our previous post on timinghooks](../../09/16/timinghooks.html)
+development. Refer to [our previous post on timinghooks](../../../../timinghooks/2025/09/16/timinghooks.html)
 for a permanent way to embed timing information into your script.
 
 # cProfile

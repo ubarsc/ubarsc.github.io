@@ -2,7 +2,7 @@
 layout: post
 title:  "Gathering timing information for sections of your code with timinghooks"
 date:   2025-09-16 8:00:00 +1000
-categories: timinghooks tutorial
+categories: ubarsc tutorial timinghooks
 ---
 
 # Introduction

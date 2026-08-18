@@ -2,7 +2,7 @@
 layout: post
 title:  "New release of Moamosaic (1.0.1)"
 date:   2025-04-16 07:35:00 +1000
-categories: MoaMosaic update
+categories: ubarsc update MoaMosaic
 ---
 
 [Version 1.0.1](https://github.com/ubarsc/moamosaic/releases/tag/moamosaic-1.0.1)

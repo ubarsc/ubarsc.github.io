@@ -2,7 +2,7 @@
 layout: post
 title:  "Using RIOS and Moamosaic to create a proxy woody-vegetation density layer for Australia"
 date:   2025-10-16 11:00:00 +1000
-categories: RIOS MoaMosaic tutorial
+categories: ubarsc tutorial RIOS MoaMosaic
 ---
 # Using RIOS and Moamosaic to create a proxy woody-vegetation density layer for Australia
 

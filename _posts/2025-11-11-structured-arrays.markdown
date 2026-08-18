@@ -2,7 +2,7 @@
 layout: post
 title:  "Numpy Structured Arrays"
 date:   2025-11-11 10:00:00 +1000
-categories: numpy tutorial
+categories: ubarsc tutorial numpy
 ---
 
 # Introduction
@@ -10,7 +10,7 @@ categories: numpy tutorial
 [Numpy Structured arrays](https://numpy.org/doc/stable/user/basics.rec.html) are a more complex type
 of array made up of smaller "structures". This is very similar to an array of `struct`s in the C language.
 
-Previously, we had [introduced Numba's `@jitclass`](../../08/07/numbastruct.html) feature for grouping
+Previously, we had [introduced Numba's `@jitclass`](../../../../numba/2025/08/07/numbastruct.html) feature for grouping
 together values of different types. However, for many uses (outside of building your own data structures)
 structured arrays will suffice.
 
