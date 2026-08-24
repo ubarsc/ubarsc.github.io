@@ -2,7 +2,7 @@
 layout: post
 title:  "kealib 1.6.2 bug fix release"
 date:   2025-05-02 08:00:00 +1000
-categories: KeaLib update
+categories: ubarsc update KeaLib
 ---
 
 [kealib](https://kealib.org/) 1.6.2 has been released. This is a minor a bug fix release.

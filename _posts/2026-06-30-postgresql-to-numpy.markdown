@@ -2,7 +2,7 @@
 layout: post
 title:  "Reading results from PostGreSQL directly into numpy arrays"
 date:   2026-06-30 08:00:00 +1000
-categories: PostGreSQL tutorial
+categories: ubarsc tutorial PostGreSQL
 ---
 
 # Introduction

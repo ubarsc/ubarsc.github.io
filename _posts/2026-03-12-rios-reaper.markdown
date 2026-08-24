@@ -2,7 +2,7 @@
 layout: post
 title:  "Introducing the RIOS Reaper for terminating unused AWS resources"
 date:   2026-03-12 10:00:00 +1000
-categories: RIOSReaper tutorial
+categories: ubarsc tutorial RIOSReaper
 ---
 
 # Introduction

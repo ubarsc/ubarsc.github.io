@@ -1,0 +1,22 @@
+name: Check Internal Links
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  test-build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout source code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+
+    # Step 3: Verify the installation and run scripts
+    - name: Check links
+      run: python check_internal_links.py

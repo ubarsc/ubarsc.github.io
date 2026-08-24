@@ -2,7 +2,7 @@
 layout: post
 title:  "Querying Raster Layers with Raster Attribute Tables"
 date:   2026-01-21 10:00:00 +1000
-categories: TuiView tutorial
+categories: ubarsc tutorial TuiView
 ---
 
 # Introduction
@@ -14,7 +14,7 @@ attribute table as thematic.
 
 Outputs from [pyshepseg](https://www.pyshepseg.org/en/latest/) 
 generally contain raster attribute tables. See our 
-[previous post](../../../2025/12/11/pyshepseg-intro.html) on 
+[previous post](../../../../pyshepseg/2025/12/11/pyshepseg-intro.html) on 
 performing a segmentation and gathering statistics that are
 put into the raster attribute table.
 

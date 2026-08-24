@@ -16,6 +16,12 @@ On Mac, see: https://jekyllrb.com/docs/installation/macos/
 
 # A note about categories
 
-Each post most have at least 2 "categories". These categories are space separated.
-The last category is the type ("tutorial" etc) and the ones before are the software
-the post relates to.
+format of the categories tag is:
+```
+categories: ubarsc <type> <software1> ... <softwareX>
+```
+
+'ubarsc' is just to make the path unique (github does funny things if the first category 
+matches an existing project).
+<type> should be tutorial, update etc
+and <software> is the names(s) of the software this relates to
