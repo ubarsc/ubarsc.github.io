@@ -1,0 +1,10 @@
+---
+layout: post
+title:  "pyshepseg 2.0.6 released"
+date:   2026-09-17 12:55:00 +1000
+categories: ubarsc update PyShepSeg
+---
+
+pyshepseg 2.0.6 has been released. This release includes more efficient handling of RATs with
+a very large number of columns.
+More information can be found in the [Release Notes](https://www.pyshepseg.org/en/latest/ReleaseNotes.html).
