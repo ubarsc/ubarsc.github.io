@@ -1,0 +1,12 @@
+---
+layout: post
+title:  "RatZarr 1.0.3 released"
+date:   2026-09-17 12:40:00 +1000
+categories: ubarsc update RatZarr
+---
+
+[RatZarr](https://github.com/ubarsc/ratzarr) 1.0.3 has been released
+
+This release includes some efficiency improvements for RATs with a
+very large number of columns, and new functions for accessing the Dtype of
+each column, and the Zarr attributes attached to the RAT group.
