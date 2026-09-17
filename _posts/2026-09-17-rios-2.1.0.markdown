@@ -1,0 +1,13 @@
+---
+layout: post
+title:  "RIOS 2.0.8"
+date:   2026-09-17 13:00:00 +1000
+categories: ubarsc update RIOS
+---
+
+RIOS version 2.0.8 has been released. Major features include better reprojections on
+inputs with very large extent, some improvements in error handling and reporting, and
+a new doc page on RIOS's map projection features.
+
+See [Release Notes](https://www.rioshome.org/en/latest/releasenotes.html)
+for more information.
