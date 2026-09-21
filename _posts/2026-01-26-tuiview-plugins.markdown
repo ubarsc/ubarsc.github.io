@@ -192,6 +192,10 @@ To create a new raster file from the original raster file and edits stored in a 
 file, use the `newfile_from_recode` entry point that was created when you
 installed `tuiview-plugins`.
 
+# RatZarr 
+
+The RatZarr TuiView plugin has its own [blog post](../../../ratzarr/2026/09/21/tuiview-plugin-ratzarr.html).
+
 # Creating your own plugins
 
 It is relatively easy to create your own plugins. As described in the

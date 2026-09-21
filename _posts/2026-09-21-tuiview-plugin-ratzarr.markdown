@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Introducing a TuiView Plugin for linking RatZarr files"
-date:   2026-09-17 10:00:00 +1000
+date:   2026-09-21 10:00:00 +1000
 categories: ubarsc tutorial TuiView RatZarr
 ---
 
