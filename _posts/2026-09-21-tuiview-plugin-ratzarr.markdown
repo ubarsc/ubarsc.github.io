@@ -22,7 +22,7 @@ pip install git+https://github.com/ubarsc/tuiview-plugins.git
 ```
 
 You will need to have TuiView installed in your current environment. You can 
-then run `tuiviewpluginmgr` on the command line. By enabling "RatZarr Quiery Window plugin"
+then run `tuiviewpluginmgr` on the command line. By enabling "RatZarr Query Window plugin"
 you will see what your `TUIVIEW_PLUGINS_PATH` environment variable needs to be
 set to.
 
