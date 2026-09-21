@@ -45,7 +45,7 @@ in a viewer you can click on the Query Button (![Query Window](https://raw.githu
 The Query Window is displayed as normal but there are 3 extra buttons:
 
 * Link a RatZarr file (<img src="https://raw.githubusercontent.com/ubarsc/tuiview-plugins/refs/heads/master/tuiview_plugins/ratzarr_querywindow/zarr-pink-stacked.svg" alt="QML" width="32" height="32">)
-* Unlink the RatZarr file (<img src="https://raw.githubusercontent.com/ubarsc/tuiview-plugins/refs/heads/master/tuiview_plugins/ratzarr_querywindow/zarr-pink-stacked-add.svg" alt="QML" width="32" height="32">)
+* Unlink the RatZarr file (<img src="https://raw.githubusercontent.com/ubarsc/tuiview-plugins/refs/heads/master/tuiview_plugins/ratzarr_querywindow/zarr-pink-stacked-cross.svg" alt="QML" width="32" height="32">)
 * Add a Column to the currently linked RatZarr file (<img src="https://raw.githubusercontent.com/ubarsc/tuiview-plugins/refs/heads/master/tuiview_plugins/ratzarr_querywindow/zarr-pink-stacked-add.svg" alt="QML" width="32" height="32">)
 
 Note that you may need to click the 2 arrows to see all the buttons on the toolbar
@@ -68,7 +68,7 @@ after the columns in the Raster Attribute Table:
 Most of the existing functionality with the Query Window should work with columns
 from a RatZarr file. 
 
-Columns with `width` set to reater than one will show the individual elements
+Columns with `width` set to greater than one will show the individual elements
 separated by a vertical bar (`|`).
 
 You can use the RatZarr columns to select rows in the table by expression. The RatZarr
@@ -87,7 +87,7 @@ type (allowing you to choose any of the supported Zarr column types), width and 
 Also, you can move the order of the columns so they are intermixed with the columns from 
 the raster file. Saving the column order saves to the raster file. TuiView ignores
 columns that are not in the raster's list of column orders when it loads a file.
-When a RatZarr file is loaded with those columns it will then apply the
+When a RatZarr file is loaded with those columns, it will then apply the
 previously saved order.
 
 You can update a RatZarr column by going into edit mode (![Lock](https://raw.githubusercontent.com/ubarsc/tuiview/refs/heads/master/resources/lock.png)) 
@@ -106,7 +106,7 @@ colour table for columns where width=1.
 # Conclusion
 
 Linking a RAT from a raster file with a RatZarr file is a handy way to leverage
-the benefits of both formats. It also makes it easier to save different types
+the benefits of both formats. It also makes it possible to save different types
 of statistics in separate RatZarr files and only open the necessary ones for each
 task making the management of the columns easier.
 
