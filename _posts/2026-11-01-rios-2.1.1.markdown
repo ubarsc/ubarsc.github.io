@@ -1,0 +1,12 @@
+---
+layout: post
+title:  "RIOS 2.1.1"
+date:   2026-11-01 13:00:00 +1000
+categories: ubarsc update RIOS
+---
+
+RIOS version 2.1.1 was released on 2026-10-05. This is a minor bug fix release, with no
+new features
+
+See [Release Notes](https://www.rioshome.org/en/latest/releasenotes.html)
+for more information.
